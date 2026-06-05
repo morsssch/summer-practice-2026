@@ -7,6 +7,7 @@ struct Input {
     bool right       = false;
     bool jump        = false;
     bool jumpPressed = false;
+    bool roll        = false;
 };
 
 void updateInput(Input& input, const sf::Window& window);
