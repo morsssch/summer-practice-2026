@@ -1,0 +1,16 @@
+PROJECT.md
+assets_pack/
+
+# Build
+build/
+
+# macOS
+.DS_Store
+
+# VS Code (кроме настроек IntelliSense)
+.vscode/*
+!.vscode/c_cpp_properties.json
+!.vscode/tasks.json
+
+# Бинарник если вдруг окажется в корне
+Platformer
