@@ -21,4 +21,4 @@ struct Player {
     AnimState anim         = AnimState::IDLE;
 };
 
-void updatePlayer(Player& p, const Input& input, const uint8_t tiles[22][40], float dt);
+void updatePlayer(Player& p, const Input& input, const uint8_t tiles[17][30], float dt);

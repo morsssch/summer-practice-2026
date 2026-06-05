@@ -3,10 +3,10 @@
 #include <cstdint>
 
 constexpr int TILE_SIZE      = 16;
-constexpr int SCREEN_TILES_W = 40;
-constexpr int SCREEN_TILES_H = 22;
-constexpr int WINDOW_W       = 640;
-constexpr int WINDOW_H       = 352;
+constexpr int SCREEN_TILES_W = 30;
+constexpr int SCREEN_TILES_H = 17;
+constexpr int WINDOW_W       = 480;
+constexpr int WINDOW_H       = 272;
 
 struct Vec2 {
     float x = 0.f;

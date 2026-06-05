@@ -8,7 +8,7 @@
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode({1280, 704}), "Platformer");
+    sf::RenderWindow window(sf::VideoMode({WINDOW_W*2, WINDOW_H*2}), "Platformer");
     applyLetterbox(window);
 
     Renderer renderer;
@@ -16,7 +16,7 @@ int main()
         return -1;
 
     Player player;
-    player.pos = { 32.f, 280.f };
+    player.pos = { 32.f, 220.f };
 
     Input input;
 

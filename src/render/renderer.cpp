@@ -1,4 +1,5 @@
 #include "renderer.h"
+#include "core/types.h"
 #include <SFML/Graphics.hpp>
 
 bool initRenderer(Renderer& r, sf::RenderWindow& window) {
@@ -10,7 +11,7 @@ bool initRenderer(Renderer& r, sf::RenderWindow& window) {
 }
 
 void applyLetterbox(sf::RenderWindow& window) {
-    float targetRatio = 640.f / 352.f;
+    float targetRatio = (float)WINDOW_W / (float)WINDOW_H;
     float windowRatio = (float)window.getSize().x / (float)window.getSize().y;
 
     sf::FloatRect viewport;
@@ -22,14 +23,14 @@ void applyLetterbox(sf::RenderWindow& window) {
         viewport = sf::FloatRect({ 0.f, (1.f - h) / 2.f }, { 1.f, h });
     }
 
-    sf::View view(sf::FloatRect({0, 0}, {640, 352}));
+    sf::View view(sf::FloatRect({0, 0}, {(float)WINDOW_W, (float)WINDOW_H}));
     view.setViewport(viewport);
     window.setView(view);
 }
 
 void drawBackground(Renderer& r) {
     sf::Sprite sprite(r.bgTex);
-    sprite.setScale({ 640.f / 240.f, 352.f / 160.f });
+    sprite.setScale({ (float)WINDOW_W / 240.f, (float)WINDOW_H / 160.f });
     r.window->draw(sprite);
 }
 

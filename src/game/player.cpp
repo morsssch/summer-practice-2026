@@ -13,7 +13,7 @@ const float ATTACK_DUR = 4 * 0.1f;
 const float ATTACK_CD  = 0.7f;
 
 static void updatePhysics(Player& p, const Input& input, float dt,
-                           const uint8_t tiles[22][40], bool wasOnGround)
+                           const uint8_t tiles[17][30], bool wasOnGround)
 {
     // Таймеры
     if (input.jumpPressed)      p.jumpBuffer     = 0.12f;
@@ -145,7 +145,7 @@ static void updateAnim(Player& p, const Input& input, float dt)
     }
 }
 
-void updatePlayer(Player& p, const Input& input, const uint8_t tiles[22][40], float dt)
+void updatePlayer(Player& p, const Input& input, const uint8_t tiles[17][30], float dt)
 {
     bool wasOnGround = p.onGround;
     updatePhysics(p, input, dt, tiles, wasOnGround);
