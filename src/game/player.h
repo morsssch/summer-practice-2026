@@ -2,9 +2,7 @@
 #include "core/types.h"
 #include "core/input.h"
 
-struct Renderer;
-
-enum class AnimState { IDLE, RUN, JUMP, FALL, LAND, ROLL };
+enum class AnimState { IDLE, RUN, JUMP, FALL, LAND, ROLL, ATTACK };
 
 struct Player {
     Vec2 pos;
@@ -16,8 +14,11 @@ struct Player {
     float     landTimer    = 0.f;
     float     rollTimer    = 0.f;
     float     rollCooldown = 0.f;
+    float     coyoteTimer  = 0.f;
+    float     jumpBuffer   = 0.f;
+    float     attackTimer    = 0.f;
+    float     attackCooldown = 0.f;
     AnimState anim         = AnimState::IDLE;
 };
 
-void updatePlayer(Player& p, const Input& input, float dt);
-void drawPlayer(Renderer& r, const Player& p);
+void updatePlayer(Player& p, const Input& input, const uint8_t tiles[22][40], float dt);

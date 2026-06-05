@@ -17,3 +17,20 @@ void drawTilemap(Renderer& r, const uint8_t tiles[22][40]) {
         }
     }
 }
+
+bool isPlatform(const uint8_t tiles[22][40], float worldX, float worldY) {
+    int tileX = (int)(worldX / 16.f);
+    int tileY = (int)(worldY / 16.f);
+    if (tileX < 0 || tileX >= 40 || tileY < 0 || tileY >= 22) return false;
+    return tiles[tileY][tileX] == T_PLATFORM;
+}
+
+bool isSolid(const uint8_t tiles[22][40], float worldX, float worldY) {
+    int tileX = (int)(worldX / 16.f);
+    int tileY = (int)(worldY / 16.f);
+    if (tileX < 0 || tileX >= 40 || tileY < 0 || tileY >= 22) return false;
+    uint8_t t = tiles[tileY][tileX];
+    return t == T_GRASS_TOP || t == T_GROUND
+        || t == T_DARK_TOP  || t == T_DARK
+        || t == T_BROWN_TOP || t == T_BROWN;
+}

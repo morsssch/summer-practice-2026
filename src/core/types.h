@@ -2,11 +2,11 @@
 
 #include <cstdint>
 
-const int TILE_SIZE      = 16;
-const int SCREEN_TILES_W = 40;
-const int SCREEN_TILES_H = 22;
-const int WINDOW_W       = 640; 
-const int WINDOW_H       = 352;
+constexpr int TILE_SIZE      = 16;
+constexpr int SCREEN_TILES_W = 40;
+constexpr int SCREEN_TILES_H = 22;
+constexpr int WINDOW_W       = 640;
+constexpr int WINDOW_H       = 352;
 
 struct Vec2 {
     float x = 0.f;

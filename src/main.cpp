@@ -4,6 +4,7 @@
 #include "game/player.h"
 #include "core/input.h"
 #include "levels/screen_01.h"
+#include "screens/game_screen.h"
 
 int main()
 {
@@ -38,7 +39,7 @@ int main()
         }
 
         updateInput(input, window);
-        updatePlayer(player, input, dt);
+        updatePlayer(player, input, SCREEN_01, dt);
 
         if (fpsTimer >= 1.0f)
         {

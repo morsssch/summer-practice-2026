@@ -59,6 +59,10 @@ const SpriteFrame HERO_CROUCH[2] = {
 const SpriteFrame HERO_FALL[3] = {
     {  0, 96, 16, 16 }, { 16, 96, 16, 16 }, { 32, 96, 16, 16 },
 };
+const SpriteFrame HERO_ATTACK[4] = {
+    {  0, 64, 32, 16 }, { 32, 64, 32, 16 },
+    { 64, 64, 32, 16 }, { 96, 64, 32, 16 },
+};
 const SpriteFrame HERO_HIT[4] = {
     {  0, 128, 16, 16 }, { 16, 128, 16, 16 },
     { 32, 128, 16, 16 }, { 48, 128, 16, 16 },
