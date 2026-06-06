@@ -10,22 +10,35 @@ bool initRenderer(Renderer& r, sf::RenderWindow& window) {
     return true;
 }
 
-void applyLetterbox(sf::RenderWindow& window) {
+static sf::FloatRect calcLetterboxViewport(const sf::RenderWindow& window) {
     float targetRatio = (float)WINDOW_W / (float)WINDOW_H;
     float windowRatio = (float)window.getSize().x / (float)window.getSize().y;
-
-    sf::FloatRect viewport;
     if (windowRatio > targetRatio) {
         float w = targetRatio / windowRatio;
-        viewport = sf::FloatRect({ (1.f - w) / 2.f, 0.f }, { w, 1.f });
+        return sf::FloatRect({ (1.f - w) / 2.f, 0.f }, { w, 1.f });
     } else {
         float h = windowRatio / targetRatio;
-        viewport = sf::FloatRect({ 0.f, (1.f - h) / 2.f }, { 1.f, h });
+        return sf::FloatRect({ 0.f, (1.f - h) / 2.f }, { 1.f, h });
     }
+}
 
+void applyLetterbox(Renderer& r) {
+    r.viewport = calcLetterboxViewport(*r.window);
+}
+
+void setWorldView(Renderer& r, const Camera& cam) {
+    sf::View view(sf::FloatRect(
+        { cam.x, cam.y },
+        { WINDOW_W / cam.zoom, WINDOW_H / cam.zoom }
+    ));
+    view.setViewport(r.viewport);
+    r.window->setView(view);
+}
+
+void setUIView(Renderer& r) {
     sf::View view(sf::FloatRect({0, 0}, {(float)WINDOW_W, (float)WINDOW_H}));
-    view.setViewport(viewport);
-    window.setView(view);
+    view.setViewport(r.viewport);
+    r.window->setView(view);
 }
 
 void drawBackground(Renderer& r) {

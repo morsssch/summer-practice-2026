@@ -44,8 +44,8 @@ const SpriteFrame HERO_IDLE[4] = {
     {  0, 80, 16, 16 }, { 16, 80, 16, 16 },
     { 32, 80, 16, 16 }, { 48, 80, 16, 16 },
 };
-const SpriteFrame HERO_LAND[3] = {
-    {  0, 96, 16, 16 }, { 16, 96, 16, 16 }, { 32, 96, 16, 16 },
+const SpriteFrame HERO_LAND[2] = {
+    {  0, 160, 16, 16 }, { 16, 160, 16, 16 },
 };
 const SpriteFrame HERO_JUMP[3] = {
     {  0, 112, 16, 16 }, { 16, 112, 16, 16 }, { 32, 112, 16, 16 },
@@ -53,11 +53,12 @@ const SpriteFrame HERO_JUMP[3] = {
 const SpriteFrame HERO_ROLL[3] = {
     {  0, 144, 16, 16 }, { 16, 144, 16, 16 }, { 32, 144, 16, 16 },
 };
-const SpriteFrame HERO_CROUCH[2] = {
-    {  0, 160, 16, 16 }, { 16, 160, 16, 16 },
-};
 const SpriteFrame HERO_FALL[3] = {
     {  0, 96, 16, 16 }, { 16, 96, 16, 16 }, { 32, 96, 16, 16 },
+};
+const SpriteFrame HERO_JUMP_FX[4] = {
+    {  0, 208, 16, 16 }, { 16, 208, 16, 16 },
+    { 32, 208, 16, 16 }, { 48, 208, 16, 16 },
 };
 const SpriteFrame HERO_ATTACK[4] = {
     {  0, 64, 32, 16 }, { 32, 64, 32, 16 },

@@ -9,14 +9,17 @@
 int main()
 {
     sf::RenderWindow window(sf::VideoMode({WINDOW_W*2, WINDOW_H*2}), "Platformer");
-    applyLetterbox(window);
 
     Renderer renderer;
     if (!initRenderer(renderer, window))
         return -1;
 
+    applyLetterbox(renderer);
+
     Player player;
-    player.pos = { 32.f, 220.f };
+    player.pos = { 80.f, 498.f };
+
+    Camera camera = { 0.f, 272.f };
 
     Input input;
 
@@ -26,20 +29,21 @@ int main()
 
     while (window.isOpen())
     {
-        float dt = clock.restart().asSeconds();
+        float dt = std::min(clock.restart().asSeconds(), 0.05f);
         fpsTimer += dt;
         fpsCounter++;
+
+        applyLetterbox(renderer);
 
         while (auto event = window.pollEvent())
         {
             if (event->is<sf::Event::Closed>())
                 window.close();
-            if (event->is<sf::Event::Resized>())
-                applyLetterbox(window);
         }
 
         updateInput(input, window);
         updatePlayer(player, input, SCREEN_01, dt);
+        updateCamera(camera, player, SCREEN_01, dt);
 
         if (fpsTimer >= 1.0f)
         {
@@ -49,11 +53,13 @@ int main()
         }
 
         window.clear();
+        setUIView(renderer);
         drawBackground(renderer);
+        setWorldView(renderer, camera);
         drawTilemap(renderer, SCREEN_01);
         drawPlayer(renderer, player);
 
         window.display();
-        window.setFramerateLimit(60);
+        window.setFramerateLimit(240);
     }
 }

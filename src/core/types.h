@@ -26,3 +26,9 @@ struct Color {
     uint8_t b = 255;
     uint8_t a = 255;
 };
+
+struct Camera {
+    float x    = 0.f;
+    float y    = 0.f;
+    float zoom = 1.5f;
+};

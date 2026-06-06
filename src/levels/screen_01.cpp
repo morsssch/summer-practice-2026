@@ -1,0 +1,41 @@
+#include "screen_01.h"
+#include "level_data.h"
+
+const Room SCREEN_01 = []() {
+    Room r = {};
+    r.w = 60;
+    r.h = 34;
+
+    // потолок
+    for (int x = 0; x < 60; x++)
+        r.tiles[0][x] = T_DARK_TOP;
+
+    // левая стена
+    for (int y = 1; y < 32; y++)
+        r.tiles[y][0] = r.tiles[y][1] = T_DARK;
+
+    // правая стена
+    for (int y = 1; y < 32; y++)
+        r.tiles[y][58] = r.tiles[y][59] = T_DARK;
+
+    // пол
+    for (int x = 0; x < 60; x++) {
+        r.tiles[32][x] = T_GRASS_TOP;
+        r.tiles[33][x] = T_GROUND;
+    }
+
+    // платформы
+    auto plat = [&](int row, int x1, int x2) {
+        for (int x = x1; x <= x2; x++) r.tiles[row][x] = T_PLATFORM;
+    };
+
+    plat(27,  5, 10); // низ-лево
+    plat(27, 48, 53); // низ-право
+    plat(25, 21, 25); // центр-лево (переходная)
+    plat(25, 34, 38); // центр-право (переходная)
+    plat(22, 13, 18); // середина-лево
+    plat(22, 40, 45); // середина-право
+    plat(17, 26, 32); // вверх-центр
+
+    return r;
+}();

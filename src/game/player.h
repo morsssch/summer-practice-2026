@@ -1,6 +1,7 @@
 #pragma once
 #include "core/types.h"
 #include "core/input.h"
+#include "game/room.h"
 
 enum class AnimState { IDLE, RUN, JUMP, FALL, LAND, ROLL, ATTACK };
 
@@ -18,7 +19,9 @@ struct Player {
     float     jumpBuffer   = 0.f;
     float     attackTimer    = 0.f;
     float     attackCooldown = 0.f;
+    Vec2      jumpFxPos;
+    float     jumpFxTimer  = -1.f;
     AnimState anim         = AnimState::IDLE;
 };
 
-void updatePlayer(Player& p, const Input& input, const uint8_t tiles[17][30], float dt);
+void updatePlayer(Player& p, const Input& input, const Room& room, float dt);
