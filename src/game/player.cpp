@@ -129,7 +129,7 @@ static void updateAnim(Player& p, const Input& input, float dt)
     } else if (!p.onGround && p.vel.y >= 0.f) {
         next = AnimState::FALL; frames = 3; frameTime = 0.08f;
     } else if (input.left || input.right) {
-        next = AnimState::RUN;  frames = 6; frameTime = 0.08f;
+        next = AnimState::RUN;  frames = 6; frameTime = 0.06f;
     } else {
         next = AnimState::IDLE; frames = 4; frameTime = 0.15f;
     }

@@ -1,0 +1,35 @@
+file(REMOVE_RECURSE
+  "CMakeFiles/Platformer.dir/src/core/input.cpp.o"
+  "CMakeFiles/Platformer.dir/src/core/input.cpp.o.d"
+  "CMakeFiles/Platformer.dir/src/game/grass.cpp.o"
+  "CMakeFiles/Platformer.dir/src/game/grass.cpp.o.d"
+  "CMakeFiles/Platformer.dir/src/game/player.cpp.o"
+  "CMakeFiles/Platformer.dir/src/game/player.cpp.o.d"
+  "CMakeFiles/Platformer.dir/src/game/tilemap.cpp.o"
+  "CMakeFiles/Platformer.dir/src/game/tilemap.cpp.o.d"
+  "CMakeFiles/Platformer.dir/src/levels/screen_01.cpp.o"
+  "CMakeFiles/Platformer.dir/src/levels/screen_01.cpp.o.d"
+  "CMakeFiles/Platformer.dir/src/main.cpp.o"
+  "CMakeFiles/Platformer.dir/src/main.cpp.o.d"
+  "CMakeFiles/Platformer.dir/src/render/renderer.cpp.o"
+  "CMakeFiles/Platformer.dir/src/render/renderer.cpp.o.d"
+  "CMakeFiles/Platformer.dir/src/screens/game_screen.cpp.o"
+  "CMakeFiles/Platformer.dir/src/screens/game_screen.cpp.o.d"
+  "CMakeFiles/Platformer.dir/src/screens/loading_screen.cpp.o"
+  "CMakeFiles/Platformer.dir/src/screens/loading_screen.cpp.o.d"
+  "CMakeFiles/Platformer.dir/src/screens/menu_screen.cpp.o"
+  "CMakeFiles/Platformer.dir/src/screens/menu_screen.cpp.o.d"
+  "CMakeFiles/Platformer.dir/src/screens/pause_screen.cpp.o"
+  "CMakeFiles/Platformer.dir/src/screens/pause_screen.cpp.o.d"
+  "CMakeFiles/Platformer.dir/src/screens/settings_screen.cpp.o"
+  "CMakeFiles/Platformer.dir/src/screens/settings_screen.cpp.o.d"
+  "CMakeFiles/Platformer.dir/src/screens/transition.cpp.o"
+  "CMakeFiles/Platformer.dir/src/screens/transition.cpp.o.d"
+  "Platformer"
+  "Platformer.pdb"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang CXX)
+  include(CMakeFiles/Platformer.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()

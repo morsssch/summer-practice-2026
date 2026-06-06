@@ -4,12 +4,14 @@
 #include "core/app_state.h"
 #include "game/room.h"
 #include "game/player.h"
+#include "game/grass.h"
 
 struct Renderer;
 
 struct GameState {
     Player      player;
     Camera      camera;
+    GrassField  grass;
     const Room* room = nullptr;
 };
 

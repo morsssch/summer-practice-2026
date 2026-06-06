@@ -2,6 +2,7 @@
 #include "render/renderer.h"
 #include "render/sprites.h"
 #include "game/player.h"
+#include "game/grass.h"
 #include "game/tilemap.h"
 #include "levels/screen_01.h"
 #include <cmath>
@@ -17,12 +18,14 @@ void initGameState(GameState& s) {
     float viewH  = WINDOW_H / s.camera.zoom;
     s.camera.x   = std::clamp(s.player.pos.x + 8 - viewW / 2.f, 0.f, s.room->w * TILE_SIZE - viewW);
     s.camera.y   = std::clamp(s.player.pos.y + 8 - viewH / 2.f, 0.f, s.room->h * TILE_SIZE - viewH);
+    initGrass(s.grass, *s.room);
 }
 
 AppState updateGame(GameState& s, const Input& input, float dt) {
     if (input.escapePressed) return AppState::PAUSE;
     updatePlayer(s.player, input, *s.room, dt);
     updateCamera(s.camera, s.player, *s.room, dt);
+    updateGrass(s.grass, s.player, dt);
     return AppState::GAME;
 }
 
@@ -31,6 +34,10 @@ void drawGame(Renderer& r, const GameState& s) {
     drawBackground(r);
     setWorldView(r, s.camera);
     drawTilemap(r, *s.room);
+    for (int i = 0; i < s.grass.count; i++) {
+        const GrassSprite& g = s.grass.sprites[i];
+        if (g.active) drawGrassSprite(r, g.rootX, g.rootY, g.tileCol, g.tileRow, g.angle);
+    }
     drawPlayer(r, s.player);
 }
 

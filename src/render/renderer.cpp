@@ -7,9 +7,10 @@ bool initRenderer(Renderer& r, sf::RenderWindow& window) {
     if (!r.tilesetTex.loadFromFile("assets/tileset.png"))    return false;
     if (!r.heroTex.loadFromFile("assets/hero.png"))          return false;
     if (!r.bgTex.loadFromFile("assets/background.png"))      return false;
-    r.fontLoaded = r.font.openFromFile("assets/font.ttf");
+    r.fontLoaded  = r.font.openFromFile("assets/font.ttf");
     if (r.fontLoaded) r.font.setSmooth(false);
-    r.logoLoaded = r.logoTex.loadFromFile("assets/logo.png");
+    r.grassLoaded = r.grassTex.loadFromFile("assets/grass.png");
+    r.logoLoaded  = r.logoTex.loadFromFile("assets/logo.png");
     return true;
 }
 
@@ -93,6 +94,16 @@ void drawText(Renderer& r, const std::string& str, float cx, float cy, unsigned 
                      bounds.position.y + bounds.size.y / 2.f });
     text.setPosition({cx, cy});
     r.window->draw(text);
+}
+
+void drawGrassSprite(Renderer& r, float x, float y, int tileCol, int tileRow, float angleDeg) {
+    if (!r.grassLoaded) return;
+    sf::Sprite sprite(r.grassTex);
+    sprite.setTextureRect(sf::IntRect({tileCol * 16, tileRow * 16}, {16, 16}));
+    sprite.setOrigin({8.f, 16.f});
+    sprite.setPosition({x, y});
+    sprite.setRotation(sf::degrees(angleDeg));
+    r.window->draw(sprite);
 }
 
 void drawSprite(Renderer& r, const SpriteFrame& frame, float x, float y, bool flipX) {
