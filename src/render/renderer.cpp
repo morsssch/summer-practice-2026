@@ -1,6 +1,7 @@
 #include "renderer.h"
 #include "core/types.h"
 #include <SFML/Graphics.hpp>
+#include <cmath>
 
 bool initRenderer(Renderer& r, sf::RenderWindow& window) {
     r.window = &window;
@@ -11,6 +12,8 @@ bool initRenderer(Renderer& r, sf::RenderWindow& window) {
     if (r.fontLoaded) r.font.setSmooth(false);
     r.grassLoaded = r.grassTex.loadFromFile("assets/grass.png");
     r.logoLoaded  = r.logoTex.loadFromFile("assets/logo.png");
+    (void)r.lightMap.resize({(unsigned)LIGHT_W, (unsigned)LIGHT_H});
+    r.lightMap.setSmooth(false);
     return true;
 }
 
@@ -104,6 +107,58 @@ void drawGrassSprite(Renderer& r, float x, float y, int tileCol, int tileRow, fl
     sprite.setPosition({x, y});
     sprite.setRotation(sf::degrees(angleDeg));
     r.window->draw(sprite);
+}
+
+void beginLightMap(Renderer& r, sf::Color ambient) {
+    r.lightMap.clear(ambient);
+}
+
+void drawLightQuad(Renderer& r,
+    float x0, float y0, float x1, float y1,
+    float x2, float y2, float x3, float y3,
+    sf::Color nearColor, sf::Color farColor) {
+    sf::VertexArray quad(sf::PrimitiveType::TriangleFan, 4);
+    quad[0] = {{x0, y0}, nearColor};
+    quad[1] = {{x1, y1}, nearColor};
+    quad[2] = {{x2, y2}, farColor};
+    quad[3] = {{x3, y3}, farColor};
+    r.lightMap.draw(quad);
+}
+
+void drawLightPolygon(Renderer& r, float cx, float cy, const float* xys, int count, sf::Color inner) {
+    sf::VertexArray fan(sf::PrimitiveType::TriangleFan, count + 1);
+    fan[0].position = {cx, cy};
+    fan[0].color    = inner;
+    for (int i = 0; i < count; i++) {
+        fan[i + 1].position = {xys[i * 2], xys[i * 2 + 1]};
+        fan[i + 1].color    = sf::Color(inner.r, inner.g, inner.b, 0);
+    }
+    r.lightMap.draw(fan);
+}
+
+void applyLightMap(Renderer& r) {
+    r.lightMap.display();
+    sf::Sprite overlay(r.lightMap.getTexture());
+    overlay.setScale({LIGHT_SCALE, -LIGHT_SCALE});
+    overlay.setPosition({0.f, (float)WINDOW_H});
+    r.window->draw(overlay, sf::BlendMultiply);
+}
+
+void drawScanlines(Renderer& r) {
+    const int step = 2;
+    const uint8_t alpha = 15;
+    sf::VertexArray lines(sf::PrimitiveType::Triangles, (WINDOW_H / step) * 6);
+    int idx = 0;
+    for (int y = 0; y < WINDOW_H; y += step) {
+        sf::Color c(52, 10, 44, alpha);
+        lines[idx++] = {{0.f,          (float)y},        c};
+        lines[idx++] = {{(float)WINDOW_W, (float)y},        c};
+        lines[idx++] = {{(float)WINDOW_W, (float)(y + 1)},  c};
+        lines[idx++] = {{0.f,          (float)y},        c};
+        lines[idx++] = {{(float)WINDOW_W, (float)(y + 1)},  c};
+        lines[idx++] = {{0.f,          (float)(y + 1)},  c};
+    }
+    r.window->draw(lines);
 }
 
 void drawSprite(Renderer& r, const SpriteFrame& frame, float x, float y, bool flipX) {
