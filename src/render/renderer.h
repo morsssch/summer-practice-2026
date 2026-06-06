@@ -21,6 +21,8 @@ struct Renderer {
     sf::RenderTexture  lightMap;
 };
 
+struct Room;
+
 bool initRenderer(Renderer& r, sf::RenderWindow& window);
 
 void applyLetterbox(Renderer& r);
@@ -29,6 +31,7 @@ void setUIView(Renderer& r);
 
 void drawBackground(Renderer& r);
 void drawTile(Renderer& r, const SpriteFrame& frame, int tileX, int tileY);
+void drawTilemap(Renderer& r, const Room& room);
 void drawSprite(Renderer& r, const SpriteFrame& frame, float x, float y, bool flipX = false);
 void drawRect(Renderer& r, float x, float y, float w, float h, sf::Color color);
 void drawText(Renderer& r, const std::string& str, float cx, float cy, unsigned int size, sf::Color color);
@@ -48,3 +51,7 @@ void drawLightPolygon(Renderer& r, float cx, float cy, const float* xys, int cou
 void applyLightMap(Renderer& r);
 
 void drawScanlines(Renderer& r);
+
+// Render helpers for dynamic lighting
+void addPointLight(Renderer& r, const Room& room, const Camera& cam,
+                   float wx, float wy, float radius, sf::Color inner = sf::Color::White);

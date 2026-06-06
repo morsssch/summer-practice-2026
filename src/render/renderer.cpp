@@ -1,4 +1,5 @@
 #include "renderer.h"
+#include "game/tilemap.h"
 #include "core/types.h"
 #include <SFML/Graphics.hpp>
 #include <cmath>

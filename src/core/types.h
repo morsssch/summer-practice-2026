@@ -2,33 +2,26 @@
 
 #include <cstdint>
 
-constexpr int TILE_SIZE      = 16;
-constexpr int SCREEN_TILES_W = 30;
-constexpr int SCREEN_TILES_H = 17;
-constexpr int WINDOW_W       = 480;
-constexpr int WINDOW_H       = 272;
+constexpr int TILE_SIZE = 16;
+constexpr int WINDOW_W  = 480;
+constexpr int WINDOW_H  = 272;
 
 struct Vec2 {
     float x = 0.f;
     float y = 0.f;
 };
 
-struct Rect {
-    float x = 0.f;
-    float y = 0.f;
-    float w = 0.f;
-    float h = 0.f;
-};
-
-struct Color {
-    uint8_t r = 255;
-    uint8_t g = 255;
-    uint8_t b = 255;
-    uint8_t a = 255;
-};
-
 struct Camera {
     float x    = 0.f;
     float y    = 0.f;
     float zoom = 1.5f;
+};
+
+constexpr int MAX_ROOM_W = 80;
+constexpr int MAX_ROOM_H = 60;
+
+struct Room {
+    uint8_t tiles[MAX_ROOM_H][MAX_ROOM_W];
+    int w = 0;
+    int h = 0;
 };

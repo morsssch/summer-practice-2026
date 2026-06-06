@@ -100,10 +100,24 @@ CMakeFiles/Platformer.dir/src/game/grass.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Platformer.dir/src/game/grass.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/morsss/Documents/Code/summer-practice-2026/src/game/grass.cpp -o CMakeFiles/Platformer.dir/src/game/grass.cpp.s
 
+CMakeFiles/Platformer.dir/src/game/lighting.cpp.o: CMakeFiles/Platformer.dir/flags.make
+CMakeFiles/Platformer.dir/src/game/lighting.cpp.o: src/game/lighting.cpp
+CMakeFiles/Platformer.dir/src/game/lighting.cpp.o: CMakeFiles/Platformer.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/morsss/Documents/Code/summer-practice-2026/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Platformer.dir/src/game/lighting.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Platformer.dir/src/game/lighting.cpp.o -MF CMakeFiles/Platformer.dir/src/game/lighting.cpp.o.d -o CMakeFiles/Platformer.dir/src/game/lighting.cpp.o -c /Users/morsss/Documents/Code/summer-practice-2026/src/game/lighting.cpp
+
+CMakeFiles/Platformer.dir/src/game/lighting.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Platformer.dir/src/game/lighting.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/morsss/Documents/Code/summer-practice-2026/src/game/lighting.cpp > CMakeFiles/Platformer.dir/src/game/lighting.cpp.i
+
+CMakeFiles/Platformer.dir/src/game/lighting.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Platformer.dir/src/game/lighting.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/morsss/Documents/Code/summer-practice-2026/src/game/lighting.cpp -o CMakeFiles/Platformer.dir/src/game/lighting.cpp.s
+
 CMakeFiles/Platformer.dir/src/game/player.cpp.o: CMakeFiles/Platformer.dir/flags.make
 CMakeFiles/Platformer.dir/src/game/player.cpp.o: src/game/player.cpp
 CMakeFiles/Platformer.dir/src/game/player.cpp.o: CMakeFiles/Platformer.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/morsss/Documents/Code/summer-practice-2026/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Platformer.dir/src/game/player.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/morsss/Documents/Code/summer-practice-2026/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Platformer.dir/src/game/player.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Platformer.dir/src/game/player.cpp.o -MF CMakeFiles/Platformer.dir/src/game/player.cpp.o.d -o CMakeFiles/Platformer.dir/src/game/player.cpp.o -c /Users/morsss/Documents/Code/summer-practice-2026/src/game/player.cpp
 
 CMakeFiles/Platformer.dir/src/game/player.cpp.i: cmake_force
@@ -117,7 +131,7 @@ CMakeFiles/Platformer.dir/src/game/player.cpp.s: cmake_force
 CMakeFiles/Platformer.dir/src/game/tilemap.cpp.o: CMakeFiles/Platformer.dir/flags.make
 CMakeFiles/Platformer.dir/src/game/tilemap.cpp.o: src/game/tilemap.cpp
 CMakeFiles/Platformer.dir/src/game/tilemap.cpp.o: CMakeFiles/Platformer.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/morsss/Documents/Code/summer-practice-2026/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Platformer.dir/src/game/tilemap.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/morsss/Documents/Code/summer-practice-2026/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/Platformer.dir/src/game/tilemap.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Platformer.dir/src/game/tilemap.cpp.o -MF CMakeFiles/Platformer.dir/src/game/tilemap.cpp.o.d -o CMakeFiles/Platformer.dir/src/game/tilemap.cpp.o -c /Users/morsss/Documents/Code/summer-practice-2026/src/game/tilemap.cpp
 
 CMakeFiles/Platformer.dir/src/game/tilemap.cpp.i: cmake_force
@@ -131,7 +145,7 @@ CMakeFiles/Platformer.dir/src/game/tilemap.cpp.s: cmake_force
 CMakeFiles/Platformer.dir/src/levels/screen_01.cpp.o: CMakeFiles/Platformer.dir/flags.make
 CMakeFiles/Platformer.dir/src/levels/screen_01.cpp.o: src/levels/screen_01.cpp
 CMakeFiles/Platformer.dir/src/levels/screen_01.cpp.o: CMakeFiles/Platformer.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/morsss/Documents/Code/summer-practice-2026/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/Platformer.dir/src/levels/screen_01.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/morsss/Documents/Code/summer-practice-2026/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/Platformer.dir/src/levels/screen_01.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Platformer.dir/src/levels/screen_01.cpp.o -MF CMakeFiles/Platformer.dir/src/levels/screen_01.cpp.o.d -o CMakeFiles/Platformer.dir/src/levels/screen_01.cpp.o -c /Users/morsss/Documents/Code/summer-practice-2026/src/levels/screen_01.cpp
 
 CMakeFiles/Platformer.dir/src/levels/screen_01.cpp.i: cmake_force
@@ -145,7 +159,7 @@ CMakeFiles/Platformer.dir/src/levels/screen_01.cpp.s: cmake_force
 CMakeFiles/Platformer.dir/src/main.cpp.o: CMakeFiles/Platformer.dir/flags.make
 CMakeFiles/Platformer.dir/src/main.cpp.o: src/main.cpp
 CMakeFiles/Platformer.dir/src/main.cpp.o: CMakeFiles/Platformer.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/morsss/Documents/Code/summer-practice-2026/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/Platformer.dir/src/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/morsss/Documents/Code/summer-practice-2026/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/Platformer.dir/src/main.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Platformer.dir/src/main.cpp.o -MF CMakeFiles/Platformer.dir/src/main.cpp.o.d -o CMakeFiles/Platformer.dir/src/main.cpp.o -c /Users/morsss/Documents/Code/summer-practice-2026/src/main.cpp
 
 CMakeFiles/Platformer.dir/src/main.cpp.i: cmake_force
@@ -156,10 +170,24 @@ CMakeFiles/Platformer.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Platformer.dir/src/main.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/morsss/Documents/Code/summer-practice-2026/src/main.cpp -o CMakeFiles/Platformer.dir/src/main.cpp.s
 
+CMakeFiles/Platformer.dir/src/render/lighting_draw.cpp.o: CMakeFiles/Platformer.dir/flags.make
+CMakeFiles/Platformer.dir/src/render/lighting_draw.cpp.o: src/render/lighting_draw.cpp
+CMakeFiles/Platformer.dir/src/render/lighting_draw.cpp.o: CMakeFiles/Platformer.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/morsss/Documents/Code/summer-practice-2026/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/Platformer.dir/src/render/lighting_draw.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Platformer.dir/src/render/lighting_draw.cpp.o -MF CMakeFiles/Platformer.dir/src/render/lighting_draw.cpp.o.d -o CMakeFiles/Platformer.dir/src/render/lighting_draw.cpp.o -c /Users/morsss/Documents/Code/summer-practice-2026/src/render/lighting_draw.cpp
+
+CMakeFiles/Platformer.dir/src/render/lighting_draw.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Platformer.dir/src/render/lighting_draw.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/morsss/Documents/Code/summer-practice-2026/src/render/lighting_draw.cpp > CMakeFiles/Platformer.dir/src/render/lighting_draw.cpp.i
+
+CMakeFiles/Platformer.dir/src/render/lighting_draw.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Platformer.dir/src/render/lighting_draw.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/morsss/Documents/Code/summer-practice-2026/src/render/lighting_draw.cpp -o CMakeFiles/Platformer.dir/src/render/lighting_draw.cpp.s
+
 CMakeFiles/Platformer.dir/src/render/renderer.cpp.o: CMakeFiles/Platformer.dir/flags.make
 CMakeFiles/Platformer.dir/src/render/renderer.cpp.o: src/render/renderer.cpp
 CMakeFiles/Platformer.dir/src/render/renderer.cpp.o: CMakeFiles/Platformer.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/morsss/Documents/Code/summer-practice-2026/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/Platformer.dir/src/render/renderer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/morsss/Documents/Code/summer-practice-2026/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/Platformer.dir/src/render/renderer.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Platformer.dir/src/render/renderer.cpp.o -MF CMakeFiles/Platformer.dir/src/render/renderer.cpp.o.d -o CMakeFiles/Platformer.dir/src/render/renderer.cpp.o -c /Users/morsss/Documents/Code/summer-practice-2026/src/render/renderer.cpp
 
 CMakeFiles/Platformer.dir/src/render/renderer.cpp.i: cmake_force
@@ -170,10 +198,24 @@ CMakeFiles/Platformer.dir/src/render/renderer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Platformer.dir/src/render/renderer.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/morsss/Documents/Code/summer-practice-2026/src/render/renderer.cpp -o CMakeFiles/Platformer.dir/src/render/renderer.cpp.s
 
+CMakeFiles/Platformer.dir/src/render/tilemap_draw.cpp.o: CMakeFiles/Platformer.dir/flags.make
+CMakeFiles/Platformer.dir/src/render/tilemap_draw.cpp.o: src/render/tilemap_draw.cpp
+CMakeFiles/Platformer.dir/src/render/tilemap_draw.cpp.o: CMakeFiles/Platformer.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/morsss/Documents/Code/summer-practice-2026/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/Platformer.dir/src/render/tilemap_draw.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Platformer.dir/src/render/tilemap_draw.cpp.o -MF CMakeFiles/Platformer.dir/src/render/tilemap_draw.cpp.o.d -o CMakeFiles/Platformer.dir/src/render/tilemap_draw.cpp.o -c /Users/morsss/Documents/Code/summer-practice-2026/src/render/tilemap_draw.cpp
+
+CMakeFiles/Platformer.dir/src/render/tilemap_draw.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Platformer.dir/src/render/tilemap_draw.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/morsss/Documents/Code/summer-practice-2026/src/render/tilemap_draw.cpp > CMakeFiles/Platformer.dir/src/render/tilemap_draw.cpp.i
+
+CMakeFiles/Platformer.dir/src/render/tilemap_draw.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Platformer.dir/src/render/tilemap_draw.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/morsss/Documents/Code/summer-practice-2026/src/render/tilemap_draw.cpp -o CMakeFiles/Platformer.dir/src/render/tilemap_draw.cpp.s
+
 CMakeFiles/Platformer.dir/src/screens/game_screen.cpp.o: CMakeFiles/Platformer.dir/flags.make
 CMakeFiles/Platformer.dir/src/screens/game_screen.cpp.o: src/screens/game_screen.cpp
 CMakeFiles/Platformer.dir/src/screens/game_screen.cpp.o: CMakeFiles/Platformer.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/morsss/Documents/Code/summer-practice-2026/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/Platformer.dir/src/screens/game_screen.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/morsss/Documents/Code/summer-practice-2026/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/Platformer.dir/src/screens/game_screen.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Platformer.dir/src/screens/game_screen.cpp.o -MF CMakeFiles/Platformer.dir/src/screens/game_screen.cpp.o.d -o CMakeFiles/Platformer.dir/src/screens/game_screen.cpp.o -c /Users/morsss/Documents/Code/summer-practice-2026/src/screens/game_screen.cpp
 
 CMakeFiles/Platformer.dir/src/screens/game_screen.cpp.i: cmake_force
@@ -187,7 +229,7 @@ CMakeFiles/Platformer.dir/src/screens/game_screen.cpp.s: cmake_force
 CMakeFiles/Platformer.dir/src/screens/loading_screen.cpp.o: CMakeFiles/Platformer.dir/flags.make
 CMakeFiles/Platformer.dir/src/screens/loading_screen.cpp.o: src/screens/loading_screen.cpp
 CMakeFiles/Platformer.dir/src/screens/loading_screen.cpp.o: CMakeFiles/Platformer.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/morsss/Documents/Code/summer-practice-2026/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/Platformer.dir/src/screens/loading_screen.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/morsss/Documents/Code/summer-practice-2026/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/Platformer.dir/src/screens/loading_screen.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Platformer.dir/src/screens/loading_screen.cpp.o -MF CMakeFiles/Platformer.dir/src/screens/loading_screen.cpp.o.d -o CMakeFiles/Platformer.dir/src/screens/loading_screen.cpp.o -c /Users/morsss/Documents/Code/summer-practice-2026/src/screens/loading_screen.cpp
 
 CMakeFiles/Platformer.dir/src/screens/loading_screen.cpp.i: cmake_force
@@ -201,7 +243,7 @@ CMakeFiles/Platformer.dir/src/screens/loading_screen.cpp.s: cmake_force
 CMakeFiles/Platformer.dir/src/screens/menu_screen.cpp.o: CMakeFiles/Platformer.dir/flags.make
 CMakeFiles/Platformer.dir/src/screens/menu_screen.cpp.o: src/screens/menu_screen.cpp
 CMakeFiles/Platformer.dir/src/screens/menu_screen.cpp.o: CMakeFiles/Platformer.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/morsss/Documents/Code/summer-practice-2026/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/Platformer.dir/src/screens/menu_screen.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/morsss/Documents/Code/summer-practice-2026/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/Platformer.dir/src/screens/menu_screen.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Platformer.dir/src/screens/menu_screen.cpp.o -MF CMakeFiles/Platformer.dir/src/screens/menu_screen.cpp.o.d -o CMakeFiles/Platformer.dir/src/screens/menu_screen.cpp.o -c /Users/morsss/Documents/Code/summer-practice-2026/src/screens/menu_screen.cpp
 
 CMakeFiles/Platformer.dir/src/screens/menu_screen.cpp.i: cmake_force
@@ -215,7 +257,7 @@ CMakeFiles/Platformer.dir/src/screens/menu_screen.cpp.s: cmake_force
 CMakeFiles/Platformer.dir/src/screens/pause_screen.cpp.o: CMakeFiles/Platformer.dir/flags.make
 CMakeFiles/Platformer.dir/src/screens/pause_screen.cpp.o: src/screens/pause_screen.cpp
 CMakeFiles/Platformer.dir/src/screens/pause_screen.cpp.o: CMakeFiles/Platformer.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/morsss/Documents/Code/summer-practice-2026/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/Platformer.dir/src/screens/pause_screen.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/morsss/Documents/Code/summer-practice-2026/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/Platformer.dir/src/screens/pause_screen.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Platformer.dir/src/screens/pause_screen.cpp.o -MF CMakeFiles/Platformer.dir/src/screens/pause_screen.cpp.o.d -o CMakeFiles/Platformer.dir/src/screens/pause_screen.cpp.o -c /Users/morsss/Documents/Code/summer-practice-2026/src/screens/pause_screen.cpp
 
 CMakeFiles/Platformer.dir/src/screens/pause_screen.cpp.i: cmake_force
@@ -229,7 +271,7 @@ CMakeFiles/Platformer.dir/src/screens/pause_screen.cpp.s: cmake_force
 CMakeFiles/Platformer.dir/src/screens/settings_screen.cpp.o: CMakeFiles/Platformer.dir/flags.make
 CMakeFiles/Platformer.dir/src/screens/settings_screen.cpp.o: src/screens/settings_screen.cpp
 CMakeFiles/Platformer.dir/src/screens/settings_screen.cpp.o: CMakeFiles/Platformer.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/morsss/Documents/Code/summer-practice-2026/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/Platformer.dir/src/screens/settings_screen.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/morsss/Documents/Code/summer-practice-2026/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/Platformer.dir/src/screens/settings_screen.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Platformer.dir/src/screens/settings_screen.cpp.o -MF CMakeFiles/Platformer.dir/src/screens/settings_screen.cpp.o.d -o CMakeFiles/Platformer.dir/src/screens/settings_screen.cpp.o -c /Users/morsss/Documents/Code/summer-practice-2026/src/screens/settings_screen.cpp
 
 CMakeFiles/Platformer.dir/src/screens/settings_screen.cpp.i: cmake_force
@@ -243,7 +285,7 @@ CMakeFiles/Platformer.dir/src/screens/settings_screen.cpp.s: cmake_force
 CMakeFiles/Platformer.dir/src/screens/transition.cpp.o: CMakeFiles/Platformer.dir/flags.make
 CMakeFiles/Platformer.dir/src/screens/transition.cpp.o: src/screens/transition.cpp
 CMakeFiles/Platformer.dir/src/screens/transition.cpp.o: CMakeFiles/Platformer.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/morsss/Documents/Code/summer-practice-2026/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/Platformer.dir/src/screens/transition.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/morsss/Documents/Code/summer-practice-2026/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/Platformer.dir/src/screens/transition.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Platformer.dir/src/screens/transition.cpp.o -MF CMakeFiles/Platformer.dir/src/screens/transition.cpp.o.d -o CMakeFiles/Platformer.dir/src/screens/transition.cpp.o -c /Users/morsss/Documents/Code/summer-practice-2026/src/screens/transition.cpp
 
 CMakeFiles/Platformer.dir/src/screens/transition.cpp.i: cmake_force
@@ -258,11 +300,14 @@ CMakeFiles/Platformer.dir/src/screens/transition.cpp.s: cmake_force
 Platformer_OBJECTS = \
 "CMakeFiles/Platformer.dir/src/core/input.cpp.o" \
 "CMakeFiles/Platformer.dir/src/game/grass.cpp.o" \
+"CMakeFiles/Platformer.dir/src/game/lighting.cpp.o" \
 "CMakeFiles/Platformer.dir/src/game/player.cpp.o" \
 "CMakeFiles/Platformer.dir/src/game/tilemap.cpp.o" \
 "CMakeFiles/Platformer.dir/src/levels/screen_01.cpp.o" \
 "CMakeFiles/Platformer.dir/src/main.cpp.o" \
+"CMakeFiles/Platformer.dir/src/render/lighting_draw.cpp.o" \
 "CMakeFiles/Platformer.dir/src/render/renderer.cpp.o" \
+"CMakeFiles/Platformer.dir/src/render/tilemap_draw.cpp.o" \
 "CMakeFiles/Platformer.dir/src/screens/game_screen.cpp.o" \
 "CMakeFiles/Platformer.dir/src/screens/loading_screen.cpp.o" \
 "CMakeFiles/Platformer.dir/src/screens/menu_screen.cpp.o" \
@@ -275,11 +320,14 @@ Platformer_EXTERNAL_OBJECTS =
 
 Platformer: CMakeFiles/Platformer.dir/src/core/input.cpp.o
 Platformer: CMakeFiles/Platformer.dir/src/game/grass.cpp.o
+Platformer: CMakeFiles/Platformer.dir/src/game/lighting.cpp.o
 Platformer: CMakeFiles/Platformer.dir/src/game/player.cpp.o
 Platformer: CMakeFiles/Platformer.dir/src/game/tilemap.cpp.o
 Platformer: CMakeFiles/Platformer.dir/src/levels/screen_01.cpp.o
 Platformer: CMakeFiles/Platformer.dir/src/main.cpp.o
+Platformer: CMakeFiles/Platformer.dir/src/render/lighting_draw.cpp.o
 Platformer: CMakeFiles/Platformer.dir/src/render/renderer.cpp.o
+Platformer: CMakeFiles/Platformer.dir/src/render/tilemap_draw.cpp.o
 Platformer: CMakeFiles/Platformer.dir/src/screens/game_screen.cpp.o
 Platformer: CMakeFiles/Platformer.dir/src/screens/loading_screen.cpp.o
 Platformer: CMakeFiles/Platformer.dir/src/screens/menu_screen.cpp.o
@@ -292,7 +340,7 @@ Platformer: /opt/homebrew/lib/libsfml-window.3.0.2.dylib
 Platformer: /opt/homebrew/lib/libsfml-audio.3.0.2.dylib
 Platformer: /opt/homebrew/lib/libsfml-system.3.0.2.dylib
 Platformer: CMakeFiles/Platformer.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/morsss/Documents/Code/summer-practice-2026/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Linking CXX executable Platformer"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/morsss/Documents/Code/summer-practice-2026/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Linking CXX executable Platformer"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Platformer.dir/link.txt --verbose=$(VERBOSE)
 	/opt/homebrew/bin/cmake -E copy_directory /Users/morsss/Documents/Code/summer-practice-2026/assets /Users/morsss/Documents/Code/summer-practice-2026/assets
 

@@ -8,15 +8,15 @@ void updateInput(Input& input, const sf::Window& window) {
     static bool prevConfirm = false;
     static bool prevMouse   = false;
     static bool prevEscape  = false;
+    static bool prevRoll    = false;
 
     bool prevJump   = input.jump;
-    bool prevRoll   = input.roll;
     bool prevAttack = sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Z);
 
     input.left  = sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left);
     input.right = sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right);
     input.jump  = sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Space);
-    input.roll  = sf::Keyboard::isKeyPressed(sf::Keyboard::Key::X);
+    bool rawRoll    = sf::Keyboard::isKeyPressed(sf::Keyboard::Key::X);
     bool attackKey  = sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Z);
     bool upKey      = sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up);
     bool downKey    = sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Down);
@@ -24,16 +24,16 @@ void updateInput(Input& input, const sf::Window& window) {
     bool mouseBtn   = sf::Mouse::isButtonPressed(sf::Mouse::Button::Left);
     bool escapeKey  = sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Escape);
 
-    input.jumpPressed    = input.jump && !prevJump;
-    input.roll           = input.roll && !prevRoll;
-    input.attackPressed  = attackKey  && !prevAttack;
+    input.jumpPressed    = input.jump  && !prevJump;
+    input.roll           = rawRoll     && !prevRoll;
+    input.attackPressed  = attackKey   && !prevAttack;
     input.leftPressed    = input.left  && !prevLeft;
     input.rightPressed   = input.right && !prevRight;
-    input.upPressed      = upKey      && !prevUp;
-    input.downPressed    = downKey    && !prevDown;
-    input.confirmPressed = confirmKey && !prevConfirm;
-    input.mouseClicked   = mouseBtn   && !prevMouse;
-    input.escapePressed  = escapeKey  && !prevEscape;
+    input.upPressed      = upKey       && !prevUp;
+    input.downPressed    = downKey     && !prevDown;
+    input.confirmPressed = confirmKey  && !prevConfirm;
+    input.mouseClicked   = mouseBtn    && !prevMouse;
+    input.escapePressed  = escapeKey   && !prevEscape;
 
     prevLeft    = input.left;
     prevRight   = input.right;
@@ -42,4 +42,5 @@ void updateInput(Input& input, const sf::Window& window) {
     prevConfirm = confirmKey;
     prevMouse   = mouseBtn;
     prevEscape  = escapeKey;
+    prevRoll    = rawRoll;
 }

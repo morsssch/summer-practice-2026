@@ -177,6 +177,30 @@ src/game/grass.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Platformer.dir/build.make CMakeFiles/Platformer.dir/src/game/grass.cpp.s
 .PHONY : src/game/grass.cpp.s
 
+src/game/lighting.o: src/game/lighting.cpp.o
+.PHONY : src/game/lighting.o
+
+# target to build an object file
+src/game/lighting.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Platformer.dir/build.make CMakeFiles/Platformer.dir/src/game/lighting.cpp.o
+.PHONY : src/game/lighting.cpp.o
+
+src/game/lighting.i: src/game/lighting.cpp.i
+.PHONY : src/game/lighting.i
+
+# target to preprocess a source file
+src/game/lighting.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Platformer.dir/build.make CMakeFiles/Platformer.dir/src/game/lighting.cpp.i
+.PHONY : src/game/lighting.cpp.i
+
+src/game/lighting.s: src/game/lighting.cpp.s
+.PHONY : src/game/lighting.s
+
+# target to generate assembly for a file
+src/game/lighting.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Platformer.dir/build.make CMakeFiles/Platformer.dir/src/game/lighting.cpp.s
+.PHONY : src/game/lighting.cpp.s
+
 src/game/player.o: src/game/player.cpp.o
 .PHONY : src/game/player.o
 
@@ -273,6 +297,30 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Platformer.dir/build.make CMakeFiles/Platformer.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+src/render/lighting_draw.o: src/render/lighting_draw.cpp.o
+.PHONY : src/render/lighting_draw.o
+
+# target to build an object file
+src/render/lighting_draw.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Platformer.dir/build.make CMakeFiles/Platformer.dir/src/render/lighting_draw.cpp.o
+.PHONY : src/render/lighting_draw.cpp.o
+
+src/render/lighting_draw.i: src/render/lighting_draw.cpp.i
+.PHONY : src/render/lighting_draw.i
+
+# target to preprocess a source file
+src/render/lighting_draw.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Platformer.dir/build.make CMakeFiles/Platformer.dir/src/render/lighting_draw.cpp.i
+.PHONY : src/render/lighting_draw.cpp.i
+
+src/render/lighting_draw.s: src/render/lighting_draw.cpp.s
+.PHONY : src/render/lighting_draw.s
+
+# target to generate assembly for a file
+src/render/lighting_draw.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Platformer.dir/build.make CMakeFiles/Platformer.dir/src/render/lighting_draw.cpp.s
+.PHONY : src/render/lighting_draw.cpp.s
+
 src/render/renderer.o: src/render/renderer.cpp.o
 .PHONY : src/render/renderer.o
 
@@ -296,6 +344,30 @@ src/render/renderer.s: src/render/renderer.cpp.s
 src/render/renderer.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Platformer.dir/build.make CMakeFiles/Platformer.dir/src/render/renderer.cpp.s
 .PHONY : src/render/renderer.cpp.s
+
+src/render/tilemap_draw.o: src/render/tilemap_draw.cpp.o
+.PHONY : src/render/tilemap_draw.o
+
+# target to build an object file
+src/render/tilemap_draw.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Platformer.dir/build.make CMakeFiles/Platformer.dir/src/render/tilemap_draw.cpp.o
+.PHONY : src/render/tilemap_draw.cpp.o
+
+src/render/tilemap_draw.i: src/render/tilemap_draw.cpp.i
+.PHONY : src/render/tilemap_draw.i
+
+# target to preprocess a source file
+src/render/tilemap_draw.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Platformer.dir/build.make CMakeFiles/Platformer.dir/src/render/tilemap_draw.cpp.i
+.PHONY : src/render/tilemap_draw.cpp.i
+
+src/render/tilemap_draw.s: src/render/tilemap_draw.cpp.s
+.PHONY : src/render/tilemap_draw.s
+
+# target to generate assembly for a file
+src/render/tilemap_draw.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Platformer.dir/build.make CMakeFiles/Platformer.dir/src/render/tilemap_draw.cpp.s
+.PHONY : src/render/tilemap_draw.cpp.s
 
 src/screens/game_screen.o: src/screens/game_screen.cpp.o
 .PHONY : src/screens/game_screen.o
@@ -456,6 +528,9 @@ help:
 	@echo "... src/game/grass.o"
 	@echo "... src/game/grass.i"
 	@echo "... src/game/grass.s"
+	@echo "... src/game/lighting.o"
+	@echo "... src/game/lighting.i"
+	@echo "... src/game/lighting.s"
 	@echo "... src/game/player.o"
 	@echo "... src/game/player.i"
 	@echo "... src/game/player.s"
@@ -468,9 +543,15 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/render/lighting_draw.o"
+	@echo "... src/render/lighting_draw.i"
+	@echo "... src/render/lighting_draw.s"
 	@echo "... src/render/renderer.o"
 	@echo "... src/render/renderer.i"
 	@echo "... src/render/renderer.s"
+	@echo "... src/render/tilemap_draw.o"
+	@echo "... src/render/tilemap_draw.i"
+	@echo "... src/render/tilemap_draw.s"
 	@echo "... src/screens/game_screen.o"
 	@echo "... src/screens/game_screen.i"
 	@echo "... src/screens/game_screen.s"

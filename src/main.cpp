@@ -48,6 +48,8 @@ int main()
     GameState     game;
     PauseState    pause;
 
+    window.setFramerateLimit(240);
+
     sf::Clock clock;
     int   fpsCounter = 0;
     float fpsTimer   = 0.f;
@@ -133,6 +135,5 @@ int main()
         }
 
         window.display();
-        window.setFramerateLimit(240);
     }
 }
