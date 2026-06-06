@@ -7,6 +7,9 @@ bool initRenderer(Renderer& r, sf::RenderWindow& window) {
     if (!r.tilesetTex.loadFromFile("assets/tileset.png"))    return false;
     if (!r.heroTex.loadFromFile("assets/hero.png"))          return false;
     if (!r.bgTex.loadFromFile("assets/background.png"))      return false;
+    r.fontLoaded = r.font.openFromFile("assets/font.ttf");
+    if (r.fontLoaded) r.font.setSmooth(false);
+    r.logoLoaded = r.logoTex.loadFromFile("assets/logo.png");
     return true;
 }
 
@@ -52,6 +55,44 @@ void drawTile(Renderer& r, const SpriteFrame& frame, int tileX, int tileY) {
     sprite.setTextureRect(sf::IntRect({ frame.x, frame.y }, { frame.w, frame.h }));
     sprite.setPosition({ (float)(tileX * 16), (float)(tileY * 16) });
     r.window->draw(sprite);
+}
+
+void updateMouseInput(Input& input, const Renderer& r) {
+    static float prevX = -9999.f, prevY = -9999.f;
+
+    auto winSize = r.window->getSize();
+    float vpPxW  = r.viewport.size.x * winSize.x;
+    float vpPxH  = r.viewport.size.y * winSize.y;
+
+    if (vpPxW > 0.f && vpPxH > 0.f) {
+        auto  raw   = sf::Mouse::getPosition(*r.window);
+        float vpPxX = r.viewport.position.x * winSize.x;
+        float vpPxY = r.viewport.position.y * winSize.y;
+        input.mouseX = (raw.x - vpPxX) / vpPxW * WINDOW_W;
+        input.mouseY = (raw.y - vpPxY) / vpPxH * WINDOW_H;
+    }
+
+    input.mouseMoved = (input.mouseX != prevX || input.mouseY != prevY);
+    prevX = input.mouseX;
+    prevY = input.mouseY;
+}
+
+void drawRect(Renderer& r, float x, float y, float w, float h, sf::Color color) {
+    sf::RectangleShape rect({w, h});
+    rect.setPosition({x, y});
+    rect.setFillColor(color);
+    r.window->draw(rect);
+}
+
+void drawText(Renderer& r, const std::string& str, float cx, float cy, unsigned int size, sf::Color color) {
+    if (!r.fontLoaded) return;
+    sf::Text text(r.font, sf::String::fromUtf8(str.begin(), str.end()), size);
+    text.setFillColor(color);
+    auto bounds = text.getLocalBounds();
+    text.setOrigin({ bounds.position.x + bounds.size.x / 2.f,
+                     bounds.position.y + bounds.size.y / 2.f });
+    text.setPosition({cx, cy});
+    r.window->draw(text);
 }
 
 void drawSprite(Renderer& r, const SpriteFrame& frame, float x, float y, bool flipX) {

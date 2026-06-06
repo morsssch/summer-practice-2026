@@ -2,8 +2,37 @@
 #include "render/renderer.h"
 #include "render/sprites.h"
 #include "game/player.h"
+#include "game/tilemap.h"
+#include "levels/screen_01.h"
 #include <cmath>
 #include <algorithm>
+
+void initGameState(GameState& s) {
+    s.player     = Player{};
+    s.player.pos = { 80.f, 498.f };
+    s.camera     = Camera{};
+    s.room       = &SCREEN_01;
+
+    float viewW  = WINDOW_W / s.camera.zoom;
+    float viewH  = WINDOW_H / s.camera.zoom;
+    s.camera.x   = std::clamp(s.player.pos.x + 8 - viewW / 2.f, 0.f, s.room->w * TILE_SIZE - viewW);
+    s.camera.y   = std::clamp(s.player.pos.y + 8 - viewH / 2.f, 0.f, s.room->h * TILE_SIZE - viewH);
+}
+
+AppState updateGame(GameState& s, const Input& input, float dt) {
+    if (input.escapePressed) return AppState::PAUSE;
+    updatePlayer(s.player, input, *s.room, dt);
+    updateCamera(s.camera, s.player, *s.room, dt);
+    return AppState::GAME;
+}
+
+void drawGame(Renderer& r, const GameState& s) {
+    setUIView(r);
+    drawBackground(r);
+    setWorldView(r, s.camera);
+    drawTilemap(r, *s.room);
+    drawPlayer(r, s.player);
+}
 
 void updateCamera(Camera& cam, const Player& player, const Room& room, float dt)
 {
