@@ -3,12 +3,13 @@
 #include "core/types.h"
 
 void addPointLight(Renderer& r, const Room& room, const Camera& cam,
-                   float wx, float wy, float radius, sf::Color inner) {
-    constexpr int MAXP = 256;
+                   float wx, float wy, float radius, sf::Color inner,
+                   const LightOccluder* occ, int occCount) {
+    constexpr int MAXP = 512;
     float worldPts[MAXP * 2];
     float lm[MAXP * 2];
     int count = 0;
-    buildLightPolygon(room, wx, wy, radius, cam, worldPts, count);
+    buildLightPolygon(room, wx, wy, radius, cam, worldPts, count, occ, occCount);
 
     for (int i = 0; i < count; i++) {
         lm[i * 2 + 0] = (worldPts[i * 2 + 0] - cam.x) * cam.zoom / LIGHT_SCALE;

@@ -8,6 +8,7 @@
 #include "game/enemy.h"
 #include "game/spore.h"
 #include "game/item_drop.h"
+#include "game/torch.h"
 
 struct Renderer;
 
@@ -38,6 +39,7 @@ struct GameState {
     EnemyField      enemies;
     SporeField      spores;
     ItemField       items;
+    TorchField      torches;
     const Room*     room = nullptr;
     bool            artifacts[ARTIFACT_COUNT] = {};
     bool            deathScreen = false;

@@ -8,6 +8,7 @@
 #include "game/enemy.h"
 #include "game/combat.h"
 #include "game/spore.h"
+#include "game/torch.h"
 #include "game/item_drop.h"
 #include "levels/screen_01.h"
 #include <SFML/Graphics.hpp>
@@ -87,6 +88,7 @@ void initGameState(GameState& s) {
     s.camera.x   = std::clamp(s.player.pos.x + 8 - viewW / 2.f, 0.f, s.room->w * TILE_SIZE - viewW);
     s.camera.y   = std::clamp(s.player.pos.y + 8 - viewH / 2.f, 0.f, s.room->h * TILE_SIZE - viewH);
     initGrass(s.grass, *s.room);
+    initTorches(s.torches, *s.room);
 }
 
 static const char* DEATH_LABELS[DEATH_ITEMS] = { "Начать заново", "В меню" };
@@ -145,6 +147,7 @@ AppState updateGame(GameState& s, const Input& input, float dt) {
     updateSpores(s.spores, s.player, dt);
     updateCamera(s.camera, s.player, *s.room, dt);
     updateGrass(s.grass, s.player, s.enemies, dt);
+    updateTorches(s.torches, dt);
     return AppState::GAME;
 }
 
@@ -156,6 +159,10 @@ void drawGame(Renderer& r, const GameState& s) {
     for (int i = 0; i < s.grass.count; i++) {
         const GrassSprite& g = s.grass.sprites[i];
         if (g.active) drawGrassSprite(r, g.rootX, g.rootY, g.tileCol, g.tileRow, g.angle);
+    }
+    for (int i = 0; i < s.torches.count; i++) {
+        const TorchSprite& t = s.torches.sprites[i];
+        drawTorch(r, TORCH_ANIM[t.animFrame], t.x, t.y);
     }
     for (int i = 0; i < s.enemies.count; i++) {
         const Enemy& e = s.enemies.enemies[i];
@@ -177,6 +184,22 @@ void drawGame(Renderer& r, const GameState& s) {
     }
     drawPlayer(r, s.player);
     beginLightMap(r, SUN_LIT);
+    LightOccluder occ[MAX_ENEMIES + 1];
+    int occCount = 0;
+    for (int i = 0; i < s.enemies.count; i++) {
+        const Enemy& e = s.enemies.enemies[i];
+        if (e.active && !e.dying)
+            occ[occCount++] = { e.pos.x + 1.f, e.pos.y + 2.f, 14.f, 12.f };
+    }
+    if (!s.player.isDead)
+        occ[occCount++] = { s.player.pos.x + 2.f, s.player.pos.y + 2.f, 12.f, 12.f };
+    for (int i = 0; i < s.torches.count; i++) {
+        const TorchSprite& torch = s.torches.sprites[i];
+        float phase  = torch.x * 0.13f + torch.y * 0.07f;
+        float speed  = 6.f + std::sin(torch.x * 0.21f) * 1.5f; 
+        float radius = 55.f + std::sin(s.torches.time * speed + phase) * 5.f;
+        addPointLight(r, *s.room, s.camera, torch.x + 4, torch.y + 8, radius, {255, 160, 60, 255}, occ, occCount);
+    }
     setUIView(r);
     applyLightMap(r);
     drawScanlines(r);

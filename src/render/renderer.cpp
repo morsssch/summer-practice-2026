@@ -15,6 +15,7 @@ bool initRenderer(Renderer& r, sf::RenderWindow& window) {
     r.logoLoaded     = r.logoTex.loadFromFile("assets/logo.png");
     r.mushroomLoaded = r.mushroomTex.loadFromFile("assets/mushroom_enemy.png");
     r.slimeLoaded    = r.slimeTex.loadFromFile("assets/slime_enemy.png");
+    r.torchLoaded    = r.torchTex.loadFromFile("assets/torch.png");
     r.hudHeartsLoaded    = r.hudHeartFullTex.loadFromFile("assets/hearts_hud.png")
                         && r.hudHeartEmptyTex.loadFromFile("assets/no_hearts_hud.png");
     r.hudBarLoaded       = r.hudBarLeftTex.loadFromFile("assets/health_hud_left.png")
@@ -143,6 +144,17 @@ void drawSlime(Renderer& r, const SpriteFrame& frame, float x, float y, bool fli
     sprite.setColor(sf::Color(255, 255, 255, 178));
     if (flipX) { sprite.setScale({-1.f, 1.f}); sprite.setPosition({x + frame.w, y}); }
     else       { sprite.setPosition({x, y}); }
+    r.window->draw(sprite);
+}
+
+void drawTorch(Renderer& r, const SpriteFrame& frame, float x, float y) {
+    if (!r.torchLoaded) {
+        drawRect(r, x, y, 8.f, 24.f, {255, 160, 60, 200});
+        return;
+    }
+    sf::Sprite sprite(r.torchTex);
+    sprite.setTextureRect(sf::IntRect({frame.x, frame.y}, {frame.w, frame.h}));
+    sprite.setPosition({x, y});
     r.window->draw(sprite);
 }
 

@@ -10,6 +10,7 @@ constexpr uint8_t T_DARK        = 4;
 constexpr uint8_t T_BROWN_TOP   = 5;
 constexpr uint8_t T_BROWN       = 6;
 constexpr uint8_t T_PLATFORM    = 7;
+constexpr uint8_t T_TORCH       = 8;
 
 constexpr uint8_t T_ENEMY_LIGHT = 10;
 constexpr uint8_t T_ENEMY_HEAVY = 11;

@@ -22,6 +22,8 @@ struct Renderer {
     bool               mushroomLoaded = false;
     sf::Texture        slimeTex;
     bool               slimeLoaded    = false;
+    sf::Texture        torchTex;
+    bool               torchLoaded    = false;
     sf::RenderTexture  lightMap;
 
     sf::Texture        hudHeartFullTex;
@@ -58,6 +60,7 @@ void drawText(Renderer& r, const std::string& str, float cx, float cy, unsigned 
 void drawGrassSprite(Renderer& r, float x, float y, int tileCol, int tileRow, float angleDeg);
 void drawMushroom(Renderer& r, const SpriteFrame& frame, float x, float y, bool flipX = false);
 void drawSlime(Renderer& r, const SpriteFrame& frame, float x, float y, bool flipX = false);
+void drawTorch(Renderer& r, const SpriteFrame& frame, float x, float y);
 
 void updateMouseInput(Input& input, const Renderer& r);
 
@@ -77,4 +80,5 @@ void drawUISprite(Renderer& r, sf::Texture& tex, float x, float y);
 void drawLostHeartFrame(Renderer& r, int frame, float x, float y);
 
 void addPointLight(Renderer& r, const Room& room, const Camera& cam,
-                   float wx, float wy, float radius, sf::Color inner = sf::Color::White);
+                   float wx, float wy, float radius, sf::Color inner = sf::Color::White,
+                   const LightOccluder* occ = nullptr, int occCount = 0);

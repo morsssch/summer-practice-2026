@@ -22,6 +22,8 @@ struct Camera {
 constexpr int MAX_ROOM_W = 80;
 constexpr int MAX_ROOM_H = 60;
 
+struct LightOccluder { float x, y, w, h; };
+
 struct Room {
     uint8_t tiles[MAX_ROOM_H][MAX_ROOM_W];
     int w = 0;
