@@ -2,13 +2,25 @@
     "version": "2.0.0",
     "tasks": [
         {
+            "label": "Clean",
+            "type": "shell",
+            "command": "rm -rf build",
+            "problemMatcher": [],
+            "presentation": {
+                "panel": "dedicated",
+                "clear": true
+            }
+        },
+        {
             "label": "Build & Run",
             "type": "shell",
-            "command": "cd build && cmake .. -DCMAKE_BUILD_TYPE=Debug > /dev/null && make && ./Platformer",
+            "command": "cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug && cmake --build build && ./build/Platformer",
             "group": {
                 "kind": "build",
                 "isDefault": true
             },
+            "dependsOn": "Clean",
+            "dependsOrder": "sequence",
             "presentation": {
                 "panel": "dedicated",
                 "clear": true

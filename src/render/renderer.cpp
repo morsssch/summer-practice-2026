@@ -11,8 +11,19 @@ bool initRenderer(Renderer& r, sf::RenderWindow& window) {
     if (!r.bgTex.loadFromFile("assets/background.png"))      return false;
     r.fontLoaded  = r.font.openFromFile("assets/font.ttf");
     if (r.fontLoaded) r.font.setSmooth(false);
-    r.grassLoaded = r.grassTex.loadFromFile("assets/grass.png");
-    r.logoLoaded  = r.logoTex.loadFromFile("assets/logo.png");
+    r.grassLoaded    = r.grassTex.loadFromFile("assets/grass.png");
+    r.logoLoaded     = r.logoTex.loadFromFile("assets/logo.png");
+    r.mushroomLoaded = r.mushroomTex.loadFromFile("assets/mushroom_enemy.png");
+    r.slimeLoaded    = r.slimeTex.loadFromFile("assets/slime_enemy.png");
+    r.hudHeartsLoaded    = r.hudHeartFullTex.loadFromFile("assets/hearts_hud.png")
+                        && r.hudHeartEmptyTex.loadFromFile("assets/no_hearts_hud.png");
+    r.hudBarLoaded       = r.hudBarLeftTex.loadFromFile("assets/health_hud_left.png")
+                        && r.hudBarMiddleTex.loadFromFile("assets/health_hud_middle.png")
+                        && r.hudBarRightTex.loadFromFile("assets/health_hud_right.png");
+    r.hudOrbLoaded       = r.hudOrbTex.loadFromFile("assets/orbs_hud.png");
+    r.hudHpPanelLoaded   = r.hudHpPanelTex.loadFromFile("assets/health_menu_hud.png");
+    r.hudHeroIconLoaded  = r.hudHeroIconTex.loadFromFile("assets/lifes_icon.png");
+    r.hudLostHeartLoaded = r.hudLostHeartTex.loadFromFile("assets/lost_hearts_anim_strip_5.png");
     (void)r.lightMap.resize({(unsigned)LIGHT_W, (unsigned)LIGHT_H});
     r.lightMap.setSmooth(false);
     return true;
@@ -110,6 +121,31 @@ void drawGrassSprite(Renderer& r, float x, float y, int tileCol, int tileRow, fl
     r.window->draw(sprite);
 }
 
+void drawMushroom(Renderer& r, const SpriteFrame& frame, float x, float y, bool flipX) {
+    if (!r.mushroomLoaded) {
+        drawRect(r, x + 1.f, y + 1.f, 13.f, 13.f, {180, 40, 40, 255});
+        return;
+    }
+    sf::Sprite sprite(r.mushroomTex);
+    sprite.setTextureRect(sf::IntRect({ frame.x, frame.y }, { frame.w, frame.h }));
+    if (flipX) { sprite.setScale({-1.f, 1.f}); sprite.setPosition({x + frame.w, y}); }
+    else       { sprite.setPosition({x, y}); }
+    r.window->draw(sprite);
+}
+
+void drawSlime(Renderer& r, const SpriteFrame& frame, float x, float y, bool flipX) {
+    if (!r.slimeLoaded) {
+        drawRect(r, x + 1.f, y + 1.f, 13.f, 13.f, {60, 180, 60, 178});
+        return;
+    }
+    sf::Sprite sprite(r.slimeTex);
+    sprite.setTextureRect(sf::IntRect({ frame.x, frame.y }, { frame.w, frame.h }));
+    sprite.setColor(sf::Color(255, 255, 255, 178));
+    if (flipX) { sprite.setScale({-1.f, 1.f}); sprite.setPosition({x + frame.w, y}); }
+    else       { sprite.setPosition({x, y}); }
+    r.window->draw(sprite);
+}
+
 void beginLightMap(Renderer& r, sf::Color ambient) {
     r.lightMap.clear(ambient);
 }
@@ -143,6 +179,20 @@ void applyLightMap(Renderer& r) {
     overlay.setScale({LIGHT_SCALE, -LIGHT_SCALE});
     overlay.setPosition({0.f, (float)WINDOW_H});
     r.window->draw(overlay, sf::BlendMultiply);
+}
+
+void drawUISprite(Renderer& r, sf::Texture& tex, float x, float y) {
+    sf::Sprite sprite(tex);
+    sprite.setPosition({x, y});
+    r.window->draw(sprite);
+}
+
+void drawLostHeartFrame(Renderer& r, int frame, float x, float y) {
+    if (!r.hudLostHeartLoaded || frame < 0 || frame >= 5) return;
+    sf::Sprite sprite(r.hudLostHeartTex);
+    sprite.setTextureRect(sf::IntRect({frame * 16, 0}, {16, 16}));
+    sprite.setPosition({x, y});
+    r.window->draw(sprite);
 }
 
 void drawScanlines(Renderer& r) {

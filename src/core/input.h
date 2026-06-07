@@ -7,7 +7,7 @@ struct Input {
     bool right         = false;
     bool jump          = false;
     bool jumpPressed   = false;
-    bool roll          = false;
+    bool rollPressed   = false;
     bool attackPressed = false;
 
     bool leftPressed   = false;

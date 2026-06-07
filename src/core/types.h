@@ -2,6 +2,8 @@
 
 #include <cstdint>
 
+constexpr float PI2 = 6.28318530f;
+
 constexpr int TILE_SIZE = 16;
 constexpr int WINDOW_W  = 480;
 constexpr int WINDOW_H  = 272;

@@ -2,7 +2,6 @@
 
 #include "room.h"
 
-// Tile IDs (moved from levels/level_data.h)
 constexpr uint8_t T_AIR         = 0;
 constexpr uint8_t T_GRASS_TOP   = 1;
 constexpr uint8_t T_GROUND      = 2;

@@ -21,6 +21,7 @@ struct GrassField {
 
 struct Player;
 struct Room;
+struct EnemyField;
 
 void initGrass(GrassField& g, const Room& room);
-void updateGrass(GrassField& g, const Player& player, float dt);
+void updateGrass(GrassField& g, const Player& player, const EnemyField& ef, float dt);

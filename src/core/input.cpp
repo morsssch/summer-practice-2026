@@ -9,9 +9,9 @@ void updateInput(Input& input, const sf::Window& window) {
     static bool prevMouse   = false;
     static bool prevEscape  = false;
     static bool prevRoll    = false;
+    static bool prevAttack  = false;
 
     bool prevJump   = input.jump;
-    bool prevAttack = sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Z);
 
     input.left  = sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left);
     input.right = sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right);
@@ -25,7 +25,7 @@ void updateInput(Input& input, const sf::Window& window) {
     bool escapeKey  = sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Escape);
 
     input.jumpPressed    = input.jump  && !prevJump;
-    input.roll           = rawRoll     && !prevRoll;
+    input.rollPressed    = rawRoll     && !prevRoll;
     input.attackPressed  = attackKey   && !prevAttack;
     input.leftPressed    = input.left  && !prevLeft;
     input.rightPressed   = input.right && !prevRight;
@@ -43,4 +43,5 @@ void updateInput(Input& input, const sf::Window& window) {
     prevMouse   = mouseBtn;
     prevEscape  = escapeKey;
     prevRoll    = rawRoll;
+    prevAttack  = attackKey;
 }

@@ -17,8 +17,28 @@ struct Renderer {
     bool               fontLoaded  = false;
     bool               grassLoaded = false;
     sf::Texture        logoTex;
-    bool               logoLoaded  = false;
+    bool               logoLoaded     = false;
+    sf::Texture        mushroomTex;
+    bool               mushroomLoaded = false;
+    sf::Texture        slimeTex;
+    bool               slimeLoaded    = false;
     sf::RenderTexture  lightMap;
+
+    sf::Texture        hudHeartFullTex;
+    sf::Texture        hudHeartEmptyTex;
+    sf::Texture        hudBarLeftTex;
+    sf::Texture        hudBarMiddleTex;
+    sf::Texture        hudBarRightTex;
+    sf::Texture        hudOrbTex;
+    sf::Texture        hudHpPanelTex;
+    sf::Texture        hudHeroIconTex;
+    sf::Texture        hudLostHeartTex;
+    bool               hudHeartsLoaded   = false;
+    bool               hudBarLoaded      = false;
+    bool               hudOrbLoaded      = false;
+    bool               hudHpPanelLoaded  = false;
+    bool               hudHeroIconLoaded = false;
+    bool               hudLostHeartLoaded = false;
 };
 
 struct Room;
@@ -36,6 +56,8 @@ void drawSprite(Renderer& r, const SpriteFrame& frame, float x, float y, bool fl
 void drawRect(Renderer& r, float x, float y, float w, float h, sf::Color color);
 void drawText(Renderer& r, const std::string& str, float cx, float cy, unsigned int size, sf::Color color);
 void drawGrassSprite(Renderer& r, float x, float y, int tileCol, int tileRow, float angleDeg);
+void drawMushroom(Renderer& r, const SpriteFrame& frame, float x, float y, bool flipX = false);
+void drawSlime(Renderer& r, const SpriteFrame& frame, float x, float y, bool flipX = false);
 
 void updateMouseInput(Input& input, const Renderer& r);
 
@@ -51,7 +73,8 @@ void drawLightPolygon(Renderer& r, float cx, float cy, const float* xys, int cou
 void applyLightMap(Renderer& r);
 
 void drawScanlines(Renderer& r);
+void drawUISprite(Renderer& r, sf::Texture& tex, float x, float y);
+void drawLostHeartFrame(Renderer& r, int frame, float x, float y);
 
-// Render helpers for dynamic lighting
 void addPointLight(Renderer& r, const Room& room, const Camera& cam,
                    float wx, float wy, float radius, sf::Color inner = sf::Color::White);

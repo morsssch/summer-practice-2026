@@ -1,8 +1,9 @@
 #include "grass.h"
 #include "player.h"
-#include "game/room.h"
+#include "enemy.h"
+#include "room.h"
 #include "core/types.h"
-#include "game/tilemap.h"
+#include "tilemap.h"
 #include <cmath>
 #include <algorithm>
 
@@ -40,7 +41,7 @@ void initGrass(GrassField& g, const Room& room) {
     }
 }
 
-void updateGrass(GrassField& g, const Player& player, float dt) {
+void updateGrass(GrassField& g, const Player& player, const EnemyField& ef, float dt) {
     g.time += dt;
 
     for (int i = 0; i < g.count; i++) {
@@ -59,5 +60,14 @@ void updateGrass(GrassField& g, const Player& player, float dt) {
         if (cx > s.rootX - 10.f && cx < s.rootX + 10.f &&
             cy > s.rootY - 16.f && cy < s.rootY + 4.f)
             s.angleVel += player.vel.x * 0.25f;
+
+        for (int j = 0; j < ef.count; j++) {
+            if (!ef.enemies[j].active) continue;
+            float ex = ef.enemies[j].pos.x + 8.f;
+            float ey = ef.enemies[j].pos.y + 8.f;
+            if (ex > s.rootX - 10.f && ex < s.rootX + 10.f &&
+                ey > s.rootY - 16.f && ey < s.rootY + 4.f)
+                s.angleVel += ef.enemies[j].vel.x * 0.25f;
+        }
     }
 }

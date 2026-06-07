@@ -7,10 +7,8 @@ build/
 # macOS
 .DS_Store
 
-# VS Code (кроме настроек IntelliSense)
-.vscode/*
-!.vscode/c_cpp_properties.json
-!.vscode/tasks.json
+# VS Code
+.vscode/
 
 # Бинарник если вдруг окажется в корне
 Platformer
