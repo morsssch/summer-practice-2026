@@ -1,4 +1,4 @@
 #pragma once
-#include "game/room.h"
+#include "game/world/room.h"
 
 extern const Room SCREEN_01;

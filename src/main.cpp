@@ -3,16 +3,16 @@
 #include <optional>
 #include <cstdlib>
 #include <ctime>
-#include "render/renderer.h"
+#include "render/core/renderer.h"
 #include "core/input.h"
 #include "core/app_state.h"
 #include "core/settings.h"
-#include "screens/transition.h"
-#include "screens/loading_screen.h"
-#include "screens/menu_screen.h"
-#include "screens/settings_screen.h"
-#include "screens/game_screen.h"
-#include "screens/pause_screen.h"
+#include "screens/common/transition.h"
+#include "screens/menu/loading_screen.h"
+#include "screens/menu/menu_screen.h"
+#include "screens/menu/settings_screen.h"
+#include "screens/game/game_screen.h"
+#include "screens/menu/pause_screen.h"
 
 static void initNewState(AppState to, AppState from,
                          GameState& game, MenuState& menu,
@@ -71,7 +71,7 @@ int main()
         if (!transition.active)
         {
             updateInput(input, window);
-            updateMouseInput(input, renderer);
+            updateMouseInput(input, window, renderer.viewport);
 
             AppState next = state;
             switch (state) {
