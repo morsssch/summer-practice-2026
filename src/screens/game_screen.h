@@ -9,6 +9,7 @@
 #include "game/spore.h"
 #include "game/item_drop.h"
 #include "game/torch.h"
+#include "game/traps.h"
 
 struct Renderer;
 
@@ -40,7 +41,9 @@ struct GameState {
     SporeField      spores;
     ItemField       items;
     TorchField      torches;
-    const Room*     room = nullptr;
+    TrapSystem      traps;
+    Room            room;
+    float           camShakeTimer = 0.f;
     bool            artifacts[ARTIFACT_COUNT] = {};
     bool            deathScreen = false;
     DeathScreenState deathSS;

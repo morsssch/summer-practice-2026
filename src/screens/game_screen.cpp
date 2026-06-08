@@ -10,6 +10,7 @@
 #include "game/spore.h"
 #include "game/torch.h"
 #include "game/item_drop.h"
+#include "game/traps.h"
 #include "levels/screen_01.h"
 #include <SFML/Graphics.hpp>
 #include <cmath>
@@ -74,21 +75,23 @@ void initGameState(GameState& s) {
     s.player      = Player{};
     s.player.pos  = { 80.f, 496.f };
     s.camera      = Camera{};
-    s.room        = &SCREEN_01;
+    s.room        = SCREEN_01;
     s.deathScreen = false;
     s.deathSS     = {};
-    s.spores      = {};
-    s.items       = {};
+    s.spores        = {};
+    s.items         = {};
+    s.camShakeTimer = 0.f;
     for (int i = 0; i < ARTIFACT_COUNT; i++) s.artifacts[i] = false;
     s.artifacts[ART_WIND] = true;
-    initEnemies(s.enemies, *s.room);
+    initEnemies(s.enemies, s.room);
 
     float viewW  = WINDOW_W / s.camera.zoom;
     float viewH  = WINDOW_H / s.camera.zoom;
-    s.camera.x   = std::clamp(s.player.pos.x + 8 - viewW / 2.f, 0.f, s.room->w * TILE_SIZE - viewW);
-    s.camera.y   = std::clamp(s.player.pos.y + 8 - viewH / 2.f, 0.f, s.room->h * TILE_SIZE - viewH);
-    initGrass(s.grass, *s.room);
-    initTorches(s.torches, *s.room);
+    s.camera.x   = std::clamp(s.player.pos.x + 8 - viewW / 2.f, 0.f, s.room.w * TILE_SIZE - viewW);
+    s.camera.y   = std::clamp(s.player.pos.y + 8 - viewH / 2.f, 0.f, s.room.h * TILE_SIZE - viewH);
+    initGrass(s.grass, s.room);
+    initTorches(s.torches, s.room);
+    initTraps(s.traps, s.room);
 }
 
 static const char* DEATH_LABELS[DEATH_ITEMS] = { "Начать заново", "В меню" };
@@ -124,14 +127,19 @@ AppState updateGame(GameState& s, const Input& input, float dt) {
 
     if (input.escapePressed) return AppState::PAUSE;
     s.player.hasDoubleJump = s.artifacts[ART_WIND];
-    updatePlayer(s.player, input, *s.room, dt);
+    updatePlayer(s.player, input, s.room, dt);
+    updateTraps(s.traps, s.room, s.player, dt);
+    for (int i = 0; i < s.traps.doorCount; i++) {
+        if (s.traps.doors[i].justOpened) { s.camShakeTimer = 0.55f; break; }
+    }
+    if (s.camShakeTimer > 0.f) s.camShakeTimer -= dt;
 
     if (s.player.isDead && s.player.deathTimer <= 0.f) {
         s.deathScreen = true;
         s.deathSS     = {};
     }
 
-    updateEnemies(s.enemies, *s.room, s.player.pos, dt);
+    updateEnemies(s.enemies, s.room, s.player.pos, dt);
     resolveAttack(s.player, s.enemies, makeAttackProps(s.artifacts));
     resolveEnemyContact(s.enemies, s.player);
     resolveEnemyAttack(s.enemies, s.player);
@@ -143,9 +151,27 @@ AppState updateGame(GameState& s, const Input& input, float dt) {
         }
         e.attackFxSpawned = true;
     }
-    updateItemDrops(s.items, dt);
+    for (int i = 0; i < s.enemies.count; i++) {
+        Enemy& e = s.enemies.enemies[i];
+        if (!e.active || !e.dying || e.dropSpawned) continue;
+        e.dropSpawned = true;
+        int roll = rand() % 100;
+        bool playerNeedsHeal = s.player.currentHp < s.player.maxHp;
+        if (roll < 10 && playerNeedsHeal) {
+            spawnItemDrop(s.items, e.pos.x + 4.f, e.pos.y + 4.f, ITEM_POTION);
+        } else if (roll < 90) {
+            int r2 = rand() % 100;
+            int orbCount = (r2 < 20) ? 3 : (r2 < 55) ? 2 : 1;
+            for (int j = 0; j < orbCount; j++) {
+                float vx = (float)(rand() % 60) - 30.f;
+                float vy = -60.f - (float)(rand() % 50);
+                spawnItemDrop(s.items, e.pos.x + 4.f, e.pos.y + 4.f, ITEM_ORB, vx, vy);
+            }
+        }
+    }
+    updateItemDrops(s.items, s.player, s.room, dt);
     updateSpores(s.spores, s.player, dt);
-    updateCamera(s.camera, s.player, *s.room, dt);
+    updateCamera(s.camera, s.player, s.room, dt);
     updateGrass(s.grass, s.player, s.enemies, dt);
     updateTorches(s.torches, dt);
     return AppState::GAME;
@@ -154,8 +180,15 @@ AppState updateGame(GameState& s, const Input& input, float dt) {
 void drawGame(Renderer& r, const GameState& s) {
     setUIView(r);
     drawBackground(r);
-    setWorldView(r, s.camera);
-    drawTilemap(r, *s.room);
+    Camera shakyCam = s.camera;
+    if (s.camShakeTimer > 0.f) {
+        float m = 3.f * (s.camShakeTimer / 0.55f);
+        shakyCam.x += (float)(rand() % 5 - 2) * m;
+        shakyCam.y += (float)(rand() % 5 - 2) * m;
+    }
+    setWorldView(r, shakyCam);
+    drawTilemap(r, s.room);
+    drawTraps(r, s.traps);
     for (int i = 0; i < s.grass.count; i++) {
         const GrassSprite& g = s.grass.sprites[i];
         if (g.active) drawGrassSprite(r, g.rootX, g.rootY, g.tileCol, g.tileRow, g.angle);
@@ -163,6 +196,20 @@ void drawGame(Renderer& r, const GameState& s) {
     for (int i = 0; i < s.torches.count; i++) {
         const TorchSprite& t = s.torches.sprites[i];
         drawTorch(r, TORCH_ANIM[t.animFrame], t.x, t.y);
+    }
+    for (int i = 0; i < MAX_ITEM_DROPS; i++) {
+        const ItemDrop& d = s.items.drops[i];
+        if (!d.active) continue;
+        bool blink = d.lifetime < 3.f && (int)(d.lifetime * 8.f) % 2 == 0;
+        uint8_t alpha = blink ? 80 : 255;
+        if (d.collected) {
+            if (d.collectFrame < 5) drawOrbCollect(r, ORB_COLLECTED[d.collectFrame], d.pos.x, d.pos.y);
+        } else if (d.type == ITEM_ORB) {
+            drawOrbDrop(r, ORB_ANIM[d.animFrame], d.pos.x, d.pos.y, alpha);
+        } else if (d.type == ITEM_POTION) {
+            float bob = std::sin((12.f - d.lifetime) * 3.f) * 1.5f;
+            drawPotion(r, d.pos.x, d.pos.y + bob, alpha);
+        }
     }
     for (int i = 0; i < s.enemies.count; i++) {
         const Enemy& e = s.enemies.enemies[i];
@@ -198,7 +245,7 @@ void drawGame(Renderer& r, const GameState& s) {
         float phase  = torch.x * 0.13f + torch.y * 0.07f;
         float speed  = 6.f + std::sin(torch.x * 0.21f) * 1.5f; 
         float radius = 55.f + std::sin(s.torches.time * speed + phase) * 5.f;
-        addPointLight(r, *s.room, s.camera, torch.x + 4, torch.y + 8, radius, {255, 160, 60, 255}, occ, occCount);
+        addPointLight(r, s.room, s.camera, torch.x + 4, torch.y + 8, radius, {255, 160, 60, 255}, occ, occCount);
     }
     setUIView(r);
     applyLightMap(r);

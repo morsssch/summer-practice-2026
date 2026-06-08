@@ -27,6 +27,7 @@ struct Player {
     int   currentHp      = 3;
     float iframeTimer    = 0.f;
     int   jumpsLeft      = 0;
+    int   orbs           = 0;
     bool  hasDoubleJump  = false;
     bool  isDead         = false;
     bool  pendingDeath   = false;
@@ -44,6 +45,10 @@ struct Player {
     float hitAnimTimer        = -1.f;
     float facingCoyoteTimer   = 0.f;
     bool  lastFacingRight     = true;
+    int   gainedHeartSlot       = -1;
+    float gainedHeartTimer      = -1.f;
+    int   gainedHeartFrame      = 4;
+    float gainedHeartFrameTimer = 0.f;
 };
 
 void updatePlayer(Player& p, const Input& input, const Room& room, float dt);

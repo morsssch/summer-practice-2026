@@ -48,13 +48,24 @@ const Room SCREEN_01 = []() {
     r.tiles[16][29] = T_ENEMY_HEAVY; // слизень: верх-центр платформа
 
 
-    r.tiles[31][ 4] = T_TORCH; 
-    r.tiles[31][55] = T_TORCH; 
-    r.tiles[26][ 5] = T_TORCH; 
-    r.tiles[26][53] = T_TORCH; 
-    r.tiles[21][13] = T_TORCH; 
+    r.tiles[31][ 4] = T_TORCH;
+    r.tiles[31][55] = T_TORCH;
+    r.tiles[26][ 5] = T_TORCH;
+    r.tiles[26][53] = T_TORCH;
+    r.tiles[21][13] = T_TORCH;
     r.tiles[21][45] = T_TORCH;
     r.tiles[16][27] = T_TORCH;
+
+    r.tiles[31][ 3] = T_SPIKE;
+    r.tiles[31][56] = T_SPIKE;
+    r.tiles[31][57] = T_SPIKE;
+
+    r.tiles[ 1][29] = T_SPIKE_CEIL;
+    r.tiles[ 1][30] = T_SPIKE_CEIL;
+    r.tiles[ 1][31] = T_SPIKE_CEIL;
+
+    r.tiles[31][30] = T_DOOR_0;
+    r.tiles[31][23] = T_PLATE_0;
 
     return r;
 }();

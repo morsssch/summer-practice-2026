@@ -8,7 +8,8 @@ bool isSolid(const Room& room, float worldX, float worldY) {
     uint8_t t = room.tiles[tileY][tileX];
     return t == T_GRASS_TOP || t == T_GROUND
         || t == T_DARK_TOP  || t == T_DARK
-        || t == T_BROWN_TOP || t == T_BROWN;
+        || t == T_BROWN_TOP || t == T_BROWN
+        || isDoor(t);
 }
 
 bool isPlatform(const Room& room, float worldX, float worldY) {

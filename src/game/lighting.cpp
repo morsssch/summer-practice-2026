@@ -7,7 +7,6 @@
 static float rayBox(float ox, float oy, float dx, float dy,
                     float bx, float by, float bw, float bh) {
     const float EPS = 1e-6f;
-    // луч параллелен оси и стартует вне полосы коробки по этой оси → гарантированный промах
     if (std::abs(dx) < EPS && (ox < bx || ox > bx + bw)) return -1.f;
     if (std::abs(dy) < EPS && (oy < by || oy > by + bh)) return -1.f;
 
@@ -29,7 +28,6 @@ float castRay(const Room& room, float ox, float oy, float dx, float dy, float ma
 
     const float EXPAND = 4.f;
     for (int i = 0; i < occCount; i++) {
-        // пропускаем окклюдер если источник света внутри или вплотную к нему
         if (ox >= occ[i].x - EXPAND && ox <= occ[i].x + occ[i].w + EXPAND &&
             oy >= occ[i].y - EXPAND && oy <= occ[i].y + occ[i].h + EXPAND) continue;
         float t = rayBox(ox, oy, dx, dy, occ[i].x, occ[i].y, occ[i].w, occ[i].h);
@@ -52,16 +50,13 @@ void buildLightPolygon(const Room& room, float wx, float wy, float radius,
     float angles[MAX_ANGLES];
     int nAngles = 0;
 
-    // равномерные лучи — базовое покрытие
     const int RAYS = 90;
     for (int i = 0; i <= RAYS; i++)
         angles[nAngles++] = (float)i / RAYS * PI2;
 
-    // лучи точно в углы каждого окклюдера + крошечные смещения по обе стороны
     const float EPS_A = 0.0003f;
     const float EXPAND = 4.f;
     for (int i = 0; i < occCount && nAngles + 12 <= MAX_ANGLES; i++) {
-        // пропускаем если источник вплотную к окклюдеру
         if (wx >= occ[i].x - EXPAND && wx <= occ[i].x + occ[i].w + EXPAND &&
             wy >= occ[i].y - EXPAND && wy <= occ[i].y + occ[i].h + EXPAND) continue;
 
@@ -71,7 +66,7 @@ void buildLightPolygon(const Room& room, float wx, float wy, float radius,
                         occ[i].y + occ[i].h,  occ[i].y + occ[i].h };
         for (int c = 0; c < 4; c++) {
             float a = std::atan2(cy[c] - wy, cx[c] - wx);
-            if (a < 0.f) a += PI2;  // normalize to [0, 2π] — atan2 returns [-π, π]
+            if (a < 0.f) a += PI2;
             angles[nAngles++] = a - EPS_A;
             angles[nAngles++] = a;
             angles[nAngles++] = a + EPS_A;

@@ -1,6 +1,8 @@
 #include <SFML/Graphics.hpp>
 #include <algorithm>
 #include <optional>
+#include <cstdlib>
+#include <ctime>
 #include "render/renderer.h"
 #include "core/input.h"
 #include "core/app_state.h"
@@ -26,6 +28,7 @@ static void initNewState(AppState to, AppState from,
 
 int main()
 {
+    srand((unsigned int)std::time(nullptr));
     sf::RenderWindow window(sf::VideoMode({WINDOW_W*2, WINDOW_H*2}), "Platformer");
 
     Renderer renderer;

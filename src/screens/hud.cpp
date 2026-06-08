@@ -1,5 +1,6 @@
 #include "hud.h"
 #include "game_screen.h"
+#include "render/sprites.h"
 
 static const sf::Color ART_COLORS[5] = {
     {240, 200,  40, 255},
@@ -31,6 +32,10 @@ void drawHUD(Renderer& r, const Player& p, const bool* artifacts, int artifactCo
             drawLostHeartFrame(r, p.lostHeartFrame, hx, HP_HEARTS_Y);
             continue;
         }
+        if (full && p.gainedHeartTimer >= 0.f && i >= p.gainedHeartSlot) {
+            drawLostHeartFrame(r, p.gainedHeartFrame, hx, HP_HEARTS_Y);
+            continue;
+        }
 
         if (r.hudHeartsLoaded) {
             if (full) {
@@ -44,6 +49,10 @@ void drawHUD(Renderer& r, const Player& p, const bool* artifacts, int artifactCo
             drawRect(r, hx+1.f, HP_HEARTS_Y+1.f, 13.f, 13.f, fill);
         }
     }
+
+    static constexpr float ORB_HUD_Y = HP_HEARTS_Y + 22.f;
+    drawOrbHudIcon(r, HP_HEARTS_X, ORB_HUD_Y);
+    drawTextLeft(r, std::to_string(p.orbs), HP_HEARTS_X + 16.f, ORB_HUD_Y + 7.f, 14, {255, 220, 80, 255});
 
     const float ART_X0 = 4.f;
     const float ART_Y  = (float)WINDOW_H - 15.f;

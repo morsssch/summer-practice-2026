@@ -51,6 +51,7 @@ struct Enemy {
     bool      attackHitDone  = false;
     bool      facingRight    = true;
     bool      attackFxSpawned = false;
+    bool      dropSpawned     = false;
     EnemyAnim anim           = EnemyAnim::IDLE;
     int       animFrame      = 0;
     float     animTimer      = 0.f;

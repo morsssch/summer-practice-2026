@@ -1,5 +1,6 @@
 #include "renderer.h"
 #include "game/tilemap.h"
+#include "game/traps.h"
 #include "core/types.h"
 #include <SFML/Graphics.hpp>
 #include <cmath>
@@ -12,17 +13,19 @@ bool initRenderer(Renderer& r, sf::RenderWindow& window) {
     r.fontLoaded  = r.font.openFromFile("assets/font.ttf");
     if (r.fontLoaded) r.font.setSmooth(false);
     r.grassLoaded    = r.grassTex.loadFromFile("assets/grass.png");
-    r.logoLoaded     = r.logoTex.loadFromFile("assets/logo.png");
     r.mushroomLoaded = r.mushroomTex.loadFromFile("assets/mushroom_enemy.png");
     r.slimeLoaded    = r.slimeTex.loadFromFile("assets/slime_enemy.png");
-    r.torchLoaded    = r.torchTex.loadFromFile("assets/torch.png");
+    r.torchLoaded        = r.torchTex.loadFromFile("assets/torch.png");
+    r.spikeLoaded        = r.spikeTex.loadFromFile("assets/spikes.png");
+    r.plateLoaded        = r.plateTex.loadFromFile("assets/plate.png");
+    r.platePressedLoaded = r.platePressedTex.loadFromFile("assets/plate_pressed.png");
+    r.doorClosedLoaded   = r.doorClosedTex.loadFromFile("assets/door_closed.png");
+    r.doorOpeningLoaded  = r.doorOpeningTex.loadFromFile("assets/door_opening.png");
+    r.orbDropLoaded      = r.orbDropTex.loadFromFile("assets/orb_drop.png");
+    r.orbCollectedLoaded = r.orbCollectedTex.loadFromFile("assets/orb_collected.png");
+    r.potionLoaded       = r.potionTex.loadFromFile("assets/health_potion.png");
     r.hudHeartsLoaded    = r.hudHeartFullTex.loadFromFile("assets/hearts_hud.png")
                         && r.hudHeartEmptyTex.loadFromFile("assets/no_hearts_hud.png");
-    r.hudBarLoaded       = r.hudBarLeftTex.loadFromFile("assets/health_hud_left.png")
-                        && r.hudBarMiddleTex.loadFromFile("assets/health_hud_middle.png")
-                        && r.hudBarRightTex.loadFromFile("assets/health_hud_right.png");
-    r.hudOrbLoaded       = r.hudOrbTex.loadFromFile("assets/orbs_hud.png");
-    r.hudHpPanelLoaded   = r.hudHpPanelTex.loadFromFile("assets/health_menu_hud.png");
     r.hudHeroIconLoaded  = r.hudHeroIconTex.loadFromFile("assets/lifes_icon.png");
     r.hudLostHeartLoaded = r.hudLostHeartTex.loadFromFile("assets/lost_hearts_anim_strip_5.png");
     (void)r.lightMap.resize({(unsigned)LIGHT_W, (unsigned)LIGHT_H});
@@ -106,9 +109,19 @@ void drawText(Renderer& r, const std::string& str, float cx, float cy, unsigned 
     sf::Text text(r.font, sf::String::fromUtf8(str.begin(), str.end()), size);
     text.setFillColor(color);
     auto bounds = text.getLocalBounds();
-    text.setOrigin({ bounds.position.x + bounds.size.x / 2.f,
-                     bounds.position.y + bounds.size.y / 2.f });
-    text.setPosition({cx, cy});
+    float tlx = std::round(cx - (bounds.position.x + bounds.size.x / 2.f));
+    float tly = std::round(cy - (bounds.position.y + bounds.size.y / 2.f));
+    text.setPosition({tlx, tly});
+    r.window->draw(text);
+}
+
+void drawTextLeft(Renderer& r, const std::string& str, float x, float cy, unsigned int size, sf::Color color) {
+    if (!r.fontLoaded) return;
+    sf::Text text(r.font, sf::String::fromUtf8(str.begin(), str.end()), size);
+    text.setFillColor(color);
+    auto bounds = text.getLocalBounds();
+    float tly = std::round(cy - (bounds.position.y + bounds.size.y / 2.f));
+    text.setPosition({std::round(x - bounds.position.x), tly});
     r.window->draw(text);
 }
 
@@ -156,6 +169,118 @@ void drawTorch(Renderer& r, const SpriteFrame& frame, float x, float y) {
     sprite.setTextureRect(sf::IntRect({frame.x, frame.y}, {frame.w, frame.h}));
     sprite.setPosition({x, y});
     r.window->draw(sprite);
+}
+
+void drawOrbDrop(Renderer& r, const SpriteFrame& frame, float x, float y, uint8_t alpha) {
+    if (!r.orbDropLoaded) { drawRect(r, x, y, 8.f, 8.f, {255, 200, 50, alpha}); return; }
+    sf::Sprite sprite(r.orbDropTex);
+    sprite.setTextureRect(sf::IntRect({frame.x, frame.y}, {frame.w, frame.h}));
+    sprite.setColor(sf::Color(255, 255, 255, alpha));
+    sprite.setPosition({x, y});
+    r.window->draw(sprite);
+}
+
+void drawOrbCollect(Renderer& r, const SpriteFrame& frame, float x, float y) {
+    if (!r.orbCollectedLoaded) return;
+    sf::Sprite sprite(r.orbCollectedTex);
+    sprite.setTextureRect(sf::IntRect({frame.x, frame.y}, {frame.w, frame.h}));
+    sprite.setPosition({x, y});
+    r.window->draw(sprite);
+}
+
+void drawPotion(Renderer& r, float x, float y, uint8_t alpha) {
+    if (!r.potionLoaded) { drawRect(r, x, y, 8.f, 10.f, {80, 220, 80, alpha}); return; }
+    sf::Sprite sprite(r.potionTex);
+    sprite.setColor(sf::Color(255, 255, 255, alpha));
+    sprite.setPosition({x, y});
+    r.window->draw(sprite);
+}
+
+void drawOrbHudIcon(Renderer& r, float x, float y) {
+    if (!r.orbDropLoaded) { drawRect(r, x, y, 12.f, 12.f, {255, 200, 50, 220}); return; }
+    sf::Sprite sprite(r.orbDropTex);
+    sprite.setTextureRect(sf::IntRect({0, 0}, {8, 8}));
+    sprite.setScale({1.5f, 1.5f});
+    sprite.setPosition({x, y});
+    r.window->draw(sprite);
+}
+
+void drawTraps(Renderer& r, const TrapSystem& t) {
+    for (int i = 0; i < t.spikeCount; i++) {
+        if (!t.spikes[i].active) continue;
+        float x = t.spikes[i].tx * 16.f;
+        float y = t.spikes[i].ty * 16.f;
+        if (r.spikeLoaded) {
+            sf::Sprite sprite(r.spikeTex);
+            if (!t.spikes[i].ceil) {
+                sprite.setScale({1.f, -1.f});
+                sprite.setPosition({x, y + 16.f});
+            } else {
+                sprite.setPosition({x, y});
+            }
+            r.window->draw(sprite);
+        } else {
+            sf::Color c{220, 60, 60, 200};
+            if (!t.spikes[i].ceil)
+                drawRect(r, x + 2.f, y + 8.f, 12.f, 8.f, c);
+            else
+                drawRect(r, x + 2.f, y, 12.f, 8.f, c);
+        }
+    }
+
+    for (int i = 0; i < t.plateCount; i++) {
+        const PlateTile& pl = t.plates[i];
+        if (!pl.active) continue;
+        float x = pl.tx * 16.f;
+        float y = pl.ty * 16.f;
+        bool usePressed = pl.pressed || pl.locked;
+        if (usePressed && r.platePressedLoaded) {
+            sf::Sprite sprite(r.platePressedTex);
+            sprite.setPosition({x, y + 12.f});
+            r.window->draw(sprite);
+        } else if (!usePressed && r.plateLoaded) {
+            sf::Sprite sprite(r.plateTex);
+            sprite.setPosition({x, y + 12.f});
+            r.window->draw(sprite);
+        } else {
+            sf::Color c = usePressed ? sf::Color{200, 220, 80, 255} : sf::Color{160, 120, 50, 255};
+            drawRect(r, x + 1.f, y + 12.f, 14.f, 4.f, c);
+        }
+    }
+
+    for (int i = 0; i < t.doorCount; i++) {
+        const DoorTile& d = t.doors[i];
+        if (!d.active || d.locked) continue;
+
+        float x = d.tx * 16.f;
+        float y = (d.ty - (DOOR_TILE_H - 1)) * 16.f;
+
+        auto drawDoorSprite = [&](sf::Texture& tex, int frameX) {
+            sf::Sprite sprite(tex);
+            sprite.setTextureRect(sf::IntRect({frameX * 16, 0}, {16, 48}));
+            if (d.flipX) {
+                sprite.setScale({-1.f, 1.f});
+                sprite.setPosition({x + 16.f, y});
+            } else {
+                sprite.setPosition({x, y});
+            }
+            r.window->draw(sprite);
+        };
+
+        if (d.openFrame == 0) {
+            if (r.doorClosedLoaded)
+                drawDoorSprite(r.doorClosedTex, d.idleFrame);
+            else
+                drawRect(r, x, y, 16.f, 48.f, {80, 60, 180, 220});
+        } else {
+            if (r.doorOpeningLoaded)
+                drawDoorSprite(r.doorOpeningTex, d.openFrame);
+            else {
+                uint8_t a = (uint8_t)(220 - d.openFrame * 15);
+                drawRect(r, x, y, 16.f, 48.f, {80, 60, 180, a});
+            }
+        }
+    }
 }
 
 void beginLightMap(Renderer& r, sf::Color ambient) {

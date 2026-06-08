@@ -153,6 +153,54 @@ src/core/input.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Platformer.dir/build.make CMakeFiles/Platformer.dir/src/core/input.cpp.s
 .PHONY : src/core/input.cpp.s
 
+src/game/combat.o: src/game/combat.cpp.o
+.PHONY : src/game/combat.o
+
+# target to build an object file
+src/game/combat.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Platformer.dir/build.make CMakeFiles/Platformer.dir/src/game/combat.cpp.o
+.PHONY : src/game/combat.cpp.o
+
+src/game/combat.i: src/game/combat.cpp.i
+.PHONY : src/game/combat.i
+
+# target to preprocess a source file
+src/game/combat.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Platformer.dir/build.make CMakeFiles/Platformer.dir/src/game/combat.cpp.i
+.PHONY : src/game/combat.cpp.i
+
+src/game/combat.s: src/game/combat.cpp.s
+.PHONY : src/game/combat.s
+
+# target to generate assembly for a file
+src/game/combat.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Platformer.dir/build.make CMakeFiles/Platformer.dir/src/game/combat.cpp.s
+.PHONY : src/game/combat.cpp.s
+
+src/game/enemy.o: src/game/enemy.cpp.o
+.PHONY : src/game/enemy.o
+
+# target to build an object file
+src/game/enemy.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Platformer.dir/build.make CMakeFiles/Platformer.dir/src/game/enemy.cpp.o
+.PHONY : src/game/enemy.cpp.o
+
+src/game/enemy.i: src/game/enemy.cpp.i
+.PHONY : src/game/enemy.i
+
+# target to preprocess a source file
+src/game/enemy.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Platformer.dir/build.make CMakeFiles/Platformer.dir/src/game/enemy.cpp.i
+.PHONY : src/game/enemy.cpp.i
+
+src/game/enemy.s: src/game/enemy.cpp.s
+.PHONY : src/game/enemy.s
+
+# target to generate assembly for a file
+src/game/enemy.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Platformer.dir/build.make CMakeFiles/Platformer.dir/src/game/enemy.cpp.s
+.PHONY : src/game/enemy.cpp.s
+
 src/game/grass.o: src/game/grass.cpp.o
 .PHONY : src/game/grass.o
 
@@ -176,6 +224,30 @@ src/game/grass.s: src/game/grass.cpp.s
 src/game/grass.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Platformer.dir/build.make CMakeFiles/Platformer.dir/src/game/grass.cpp.s
 .PHONY : src/game/grass.cpp.s
+
+src/game/item_drop.o: src/game/item_drop.cpp.o
+.PHONY : src/game/item_drop.o
+
+# target to build an object file
+src/game/item_drop.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Platformer.dir/build.make CMakeFiles/Platformer.dir/src/game/item_drop.cpp.o
+.PHONY : src/game/item_drop.cpp.o
+
+src/game/item_drop.i: src/game/item_drop.cpp.i
+.PHONY : src/game/item_drop.i
+
+# target to preprocess a source file
+src/game/item_drop.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Platformer.dir/build.make CMakeFiles/Platformer.dir/src/game/item_drop.cpp.i
+.PHONY : src/game/item_drop.cpp.i
+
+src/game/item_drop.s: src/game/item_drop.cpp.s
+.PHONY : src/game/item_drop.s
+
+# target to generate assembly for a file
+src/game/item_drop.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Platformer.dir/build.make CMakeFiles/Platformer.dir/src/game/item_drop.cpp.s
+.PHONY : src/game/item_drop.cpp.s
 
 src/game/lighting.o: src/game/lighting.cpp.o
 .PHONY : src/game/lighting.o
@@ -225,6 +297,30 @@ src/game/player.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Platformer.dir/build.make CMakeFiles/Platformer.dir/src/game/player.cpp.s
 .PHONY : src/game/player.cpp.s
 
+src/game/spore.o: src/game/spore.cpp.o
+.PHONY : src/game/spore.o
+
+# target to build an object file
+src/game/spore.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Platformer.dir/build.make CMakeFiles/Platformer.dir/src/game/spore.cpp.o
+.PHONY : src/game/spore.cpp.o
+
+src/game/spore.i: src/game/spore.cpp.i
+.PHONY : src/game/spore.i
+
+# target to preprocess a source file
+src/game/spore.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Platformer.dir/build.make CMakeFiles/Platformer.dir/src/game/spore.cpp.i
+.PHONY : src/game/spore.cpp.i
+
+src/game/spore.s: src/game/spore.cpp.s
+.PHONY : src/game/spore.s
+
+# target to generate assembly for a file
+src/game/spore.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Platformer.dir/build.make CMakeFiles/Platformer.dir/src/game/spore.cpp.s
+.PHONY : src/game/spore.cpp.s
+
 src/game/tilemap.o: src/game/tilemap.cpp.o
 .PHONY : src/game/tilemap.o
 
@@ -248,6 +344,54 @@ src/game/tilemap.s: src/game/tilemap.cpp.s
 src/game/tilemap.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Platformer.dir/build.make CMakeFiles/Platformer.dir/src/game/tilemap.cpp.s
 .PHONY : src/game/tilemap.cpp.s
+
+src/game/torch.o: src/game/torch.cpp.o
+.PHONY : src/game/torch.o
+
+# target to build an object file
+src/game/torch.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Platformer.dir/build.make CMakeFiles/Platformer.dir/src/game/torch.cpp.o
+.PHONY : src/game/torch.cpp.o
+
+src/game/torch.i: src/game/torch.cpp.i
+.PHONY : src/game/torch.i
+
+# target to preprocess a source file
+src/game/torch.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Platformer.dir/build.make CMakeFiles/Platformer.dir/src/game/torch.cpp.i
+.PHONY : src/game/torch.cpp.i
+
+src/game/torch.s: src/game/torch.cpp.s
+.PHONY : src/game/torch.s
+
+# target to generate assembly for a file
+src/game/torch.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Platformer.dir/build.make CMakeFiles/Platformer.dir/src/game/torch.cpp.s
+.PHONY : src/game/torch.cpp.s
+
+src/game/traps.o: src/game/traps.cpp.o
+.PHONY : src/game/traps.o
+
+# target to build an object file
+src/game/traps.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Platformer.dir/build.make CMakeFiles/Platformer.dir/src/game/traps.cpp.o
+.PHONY : src/game/traps.cpp.o
+
+src/game/traps.i: src/game/traps.cpp.i
+.PHONY : src/game/traps.i
+
+# target to preprocess a source file
+src/game/traps.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Platformer.dir/build.make CMakeFiles/Platformer.dir/src/game/traps.cpp.i
+.PHONY : src/game/traps.cpp.i
+
+src/game/traps.s: src/game/traps.cpp.s
+.PHONY : src/game/traps.s
+
+# target to generate assembly for a file
+src/game/traps.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Platformer.dir/build.make CMakeFiles/Platformer.dir/src/game/traps.cpp.s
+.PHONY : src/game/traps.cpp.s
 
 src/levels/screen_01.o: src/levels/screen_01.cpp.o
 .PHONY : src/levels/screen_01.o
@@ -393,6 +537,30 @@ src/screens/game_screen.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Platformer.dir/build.make CMakeFiles/Platformer.dir/src/screens/game_screen.cpp.s
 .PHONY : src/screens/game_screen.cpp.s
 
+src/screens/hud.o: src/screens/hud.cpp.o
+.PHONY : src/screens/hud.o
+
+# target to build an object file
+src/screens/hud.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Platformer.dir/build.make CMakeFiles/Platformer.dir/src/screens/hud.cpp.o
+.PHONY : src/screens/hud.cpp.o
+
+src/screens/hud.i: src/screens/hud.cpp.i
+.PHONY : src/screens/hud.i
+
+# target to preprocess a source file
+src/screens/hud.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Platformer.dir/build.make CMakeFiles/Platformer.dir/src/screens/hud.cpp.i
+.PHONY : src/screens/hud.cpp.i
+
+src/screens/hud.s: src/screens/hud.cpp.s
+.PHONY : src/screens/hud.s
+
+# target to generate assembly for a file
+src/screens/hud.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Platformer.dir/build.make CMakeFiles/Platformer.dir/src/screens/hud.cpp.s
+.PHONY : src/screens/hud.cpp.s
+
 src/screens/loading_screen.o: src/screens/loading_screen.cpp.o
 .PHONY : src/screens/loading_screen.o
 
@@ -525,18 +693,36 @@ help:
 	@echo "... src/core/input.o"
 	@echo "... src/core/input.i"
 	@echo "... src/core/input.s"
+	@echo "... src/game/combat.o"
+	@echo "... src/game/combat.i"
+	@echo "... src/game/combat.s"
+	@echo "... src/game/enemy.o"
+	@echo "... src/game/enemy.i"
+	@echo "... src/game/enemy.s"
 	@echo "... src/game/grass.o"
 	@echo "... src/game/grass.i"
 	@echo "... src/game/grass.s"
+	@echo "... src/game/item_drop.o"
+	@echo "... src/game/item_drop.i"
+	@echo "... src/game/item_drop.s"
 	@echo "... src/game/lighting.o"
 	@echo "... src/game/lighting.i"
 	@echo "... src/game/lighting.s"
 	@echo "... src/game/player.o"
 	@echo "... src/game/player.i"
 	@echo "... src/game/player.s"
+	@echo "... src/game/spore.o"
+	@echo "... src/game/spore.i"
+	@echo "... src/game/spore.s"
 	@echo "... src/game/tilemap.o"
 	@echo "... src/game/tilemap.i"
 	@echo "... src/game/tilemap.s"
+	@echo "... src/game/torch.o"
+	@echo "... src/game/torch.i"
+	@echo "... src/game/torch.s"
+	@echo "... src/game/traps.o"
+	@echo "... src/game/traps.i"
+	@echo "... src/game/traps.s"
 	@echo "... src/levels/screen_01.o"
 	@echo "... src/levels/screen_01.i"
 	@echo "... src/levels/screen_01.s"
@@ -555,6 +741,9 @@ help:
 	@echo "... src/screens/game_screen.o"
 	@echo "... src/screens/game_screen.i"
 	@echo "... src/screens/game_screen.s"
+	@echo "... src/screens/hud.o"
+	@echo "... src/screens/hud.i"
+	@echo "... src/screens/hud.s"
 	@echo "... src/screens/loading_screen.o"
 	@echo "... src/screens/loading_screen.i"
 	@echo "... src/screens/loading_screen.s"

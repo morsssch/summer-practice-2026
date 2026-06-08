@@ -197,6 +197,14 @@ void updatePlayer(Player& p, const Input& input, const Room& room, float dt)
             if (p.lostHeartFrame >= 5) p.lostHeartTimer = -1.f;
         }
     }
+    if (p.gainedHeartTimer >= 0.f) {
+        p.gainedHeartFrameTimer += dt;
+        if (p.gainedHeartFrameTimer >= 0.08f) {
+            p.gainedHeartFrameTimer = 0.f;
+            p.gainedHeartFrame--;
+            if (p.gainedHeartFrame < 0) p.gainedHeartTimer = -1.f;
+        }
+    }
     updateAnim(p, input, dt);
 }
 

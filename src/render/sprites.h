@@ -179,6 +179,14 @@ const SpriteFrame SLIME_HIT[3] = {
     {32, 64, 16, 16},
 };
 
+const SpriteFrame ORB_ANIM[6] = {
+    {0,0,8,8},{8,0,8,8},{16,0,8,8},{24,0,8,8},{32,0,8,8},{40,0,8,8}
+};
+const SpriteFrame ORB_COLLECTED[5] = {
+    {0,0,8,8},{8,0,8,8},{16,0,8,8},{24,0,8,8},{32,0,8,8}
+};
+const SpriteFrame POTION_FRAME = {0, 0, 8, 10};
+
 const SpriteFrame TORCH_ANIM[12] = {
     {0, 0, 8, 24},
     {8, 0, 8, 24},
